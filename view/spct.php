@@ -5,9 +5,8 @@
         <div class="row px-xl-5">
             <div class="col-12">
                 <nav class="breadcrumb bg-light mb-30">
-                    <a class="breadcrumb-item text-dark" href="#">Home</a>
-                    <a class="breadcrumb-item text-dark" href="#">Shop</a>
-                    <span class="breadcrumb-item active">Shop Detail</span>
+                    <a class="breadcrumb-item text-dark" href="#">Trang chủ</a>
+                    <span class="breadcrumb-item active">Shopping Cart</span>
                 </nav>
             </div>
         </div>
@@ -62,14 +61,6 @@
                         <strong class="text-dark mr-3">Sizes:</strong>
                         <form>
                             <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="size-1" name="size">
-                                <label class="custom-control-label" for="size-1">XS</label>
-                            </div>
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="size-2" name="size">
-                                <label class="custom-control-label" for="size-2">S</label>
-                            </div>
-                            <div class="custom-control custom-radio custom-control-inline">
                                 <input type="radio" class="custom-control-input" id="size-3" name="size">
                                 <label class="custom-control-label" for="size-3">M</label>
                             </div>
@@ -118,7 +109,7 @@
                                 </button>
                             </div>
                         </div>
-                        <a href="giohang.html"><button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To
+                        <a href="index.php?act=giohang"><button name="addtocart" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To
                             Cart</button></a>
                     </div>
                     <div class="d-flex pt-2">
