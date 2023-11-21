@@ -49,16 +49,12 @@
             </div>
             <div class="col-lg-4 col-6 text-right">
             <form action="">
-                    <button class="btn btn-success" type="submit">Đăng ký</button>
-                    <button class="btn btn-secondary" type="submit">Đăng nhập</button>
+                    <button class="btn btn-success" type="submit">Đăng nhập</button>
+                   
                 </form>
             </div>
         </div>
     </div>
-    <!-- Topbar End -->
-
-
-    <!-- Navbar Start -->
     <div class="container-fluid bg-dark mb-30">
         <div class="row px-xl-5">
             <div class="col-lg-3 d-none d-lg-block">
@@ -68,12 +64,20 @@
                 </a>
                 <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 bg-light" id="navbar-vertical" style="width: calc(100% - 30px); z-index: 999;">
                     <div class="navbar-nav w-100">
-                        <a href="" class="nav-item nav-link">Loại Kem</a>
-                        <a href="" class="nav-item nav-link">Trà sữa</a>
-                        <a href="" class="nav-item nav-link">Trà chanh</a>
+                        <ul>
+                        
+                            <?php
+                                foreach($dsdm as $dm) {
+                                    extract($dm);
+                                    $linkdm="index.php?act=sanpham&iddm=".$id;
+                                    echo '<li style="list-style: none; margin-top: 15px;"><a style="font-size: 20px;" href="'.$linkdm.'">'.$name.'</a></li>';
+                                }
+                            ?>
+                        </ul>
                     </div>
                 </nav>
             </div>
+            
             <div class="col-lg-9">
                 <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-0">
                     <a href="" class="text-decoration-none d-block d-lg-none">
@@ -90,14 +94,14 @@
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Trang <i class="fa fa-angle-down mt-1"></i></a>
                                 <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
-                                    <a href="giohang.php" class="dropdown-item">Giỏ hàng</a>
-                                    <a href="index.php" class="dropdown-item">THỦ TỤC THANH TOÁN</a>
+                                    <a href="index.php?act=giohang" class="dropdown-item">Giỏ hàng</a>
+                                    <a href="index.php?act=checkout" class="dropdown-item">THỦ TỤC THANH TOÁN</a>
                                 </div>
                             </div>
                             <a href="index.php?act=contact" class="nav-item nav-link">Liên hệ</a>
                         </div>
                         <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
-                            <a href="index.php?act=giohang" class="btn px-0 ml-3">
+                            <a href="index.php?act=addtocart" class="btn px-0 ml-3">
                                 <i class="fas fa-shopping-cart text-primary"></i>
                                 <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
                             </a>
@@ -107,6 +111,6 @@
             </div>
         </div>
     </div>
-    <!-- Navbar End -->
+
 
     
