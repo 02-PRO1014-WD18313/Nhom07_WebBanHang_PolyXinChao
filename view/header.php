@@ -48,10 +48,18 @@
                 </form>
             </div>
             <div class="col-lg-4 col-6 text-right">
-            <form action="">
-                    <button class="btn btn-success" type="submit">Đăng nhập</button>
-                   
-                </form>
+            <?php
+                if (isset($_SESSION['user']) && ($_SESSION['user'] != "")) {
+                    $username = $_SESSION['user']['user'];
+
+                    echo '<h4>' . $username . '</h4>';
+                    echo '<a href="index.php?act=thoat">Đăng xuất</a>';
+                } else {
+                ?>
+                    <form action="?act=dangnhap1" method="post">
+                        <button class="btn btn-success" type="submit">Đăng nhập</button>
+                    </form>
+            <?php } ?>
             </div>
         </div>
     </div>
