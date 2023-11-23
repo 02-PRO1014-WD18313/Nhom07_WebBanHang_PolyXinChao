@@ -1,4 +1,7 @@
 <?php
+session_start();
+ob_start();
+include "model/taikhoan.php";
 include "model/cart.php";
 include "global.php";
 include "model/pdo.php";
@@ -92,6 +95,46 @@ if((isset($_GET['act']))&&($_GET['act']!="")){
         
         case 'sanphamtu1den2':
             include "boloc.php";
+
+        case 'dangnhap':
+            include "view/contact.php";
+            break;
+        case 'dangky':
+            include "view/contact.php";
+            break;
+        case 'dangnhap1':
+            if(isset($_POST['dangnhap1'])&&($_POST['dangnhap1']>0)){
+                $user=$_POST['user'];                
+                $pass=$_POST['pass'];
+                $checkuser=checkuser($user,$pass);
+                if(is_array($checkuser)){
+                    $_SESSION['user']=$checkuser;
+                    header('location: index.php?');
+                    // $thongbao="bạn đã đăng nhập thành công!";
+                }else{
+                    $thongbao="Tài khoản k tồn tại. Vui lòng kiểm tra hoặc đăng ký!";
+                }
+            }
+            include "view/taikhoan/dangnhap.php";
+            break;
+        case 'dangky1':
+            if(isset($_POST['dangky1'])&&($_POST['dangky1']>0)){
+                $user=$_POST['user'];
+                $email=$_POST['email'];                
+                $pass=$_POST['pass'];   
+                $address=$_POST['address'];
+                $tel=$_POST['tel'];
+                insert_taikhoan($user,$email,$pass,$address,$tel);
+                $thongbao="Đã đăng ký thành công. Vui lòng đăng nhập để thực hiện chức năng bình luận and đặt hàng";
+            }
+            include "view/taikhoan/dangky.php";
+            break;
+        case 'thoat':
+            unset($_SESSION['user']);
+            unset($_SESSION['pass']);
+            header('location: index.php?');
+            break;
+
 
 default:
         include "view/banner.php";
