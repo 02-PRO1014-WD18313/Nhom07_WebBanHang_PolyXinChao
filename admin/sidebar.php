@@ -90,19 +90,19 @@
                      </a>
                      <ul class="nav nav-treeview">
                          <li class="nav-item">
-                             <a href="?module=subject&action=lists" class="nav-link">
+                             <a href="index.php?act=listsp" class="nav-link">
                                  <i class="far fa-circle nav-icon"></i>
                                  <p>Danh sách sản phẩm</p>
                              </a>
                          </li>
                          <li class="nav-item">
-                             <a href="?module=subject&action=add" class="nav-link">
+                             <a href="index.php?act=addsp" class="nav-link">
                                  <i class="far fa-circle nav-icon"></i>
                                  <p>Thêm mới sản phẩm</p>
                              </a>
                          </li>
                          <li class="nav-item">
-                             <a href="?module=subject&action=add" class="nav-link">
+                             <a href="index.php?act=listsp" class="nav-link">
                                  <i class="far fa-circle nav-icon"></i>
                                  <p>Sửa sản phẩm</p>
                              </a>

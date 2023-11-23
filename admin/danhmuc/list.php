@@ -50,11 +50,7 @@
                                 <a href="index.php?act=suadm&id=<?php echo $value['id'] ?>" class="btn btn-warning"><i class="fa fa-edit"></i></a>
                             </td>
                             <td>
-                                <a id="<?=$value['id']?>" class="xoa">
-                                    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalDelete">
-                                       <i class="fa fa-trash"></i>
-                                    </button>
-                                </a>
+                                <a id="<?=$value['id']?>" class="xoa"><button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalDelete"><i class="fa fa-trash"></i></button></a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
