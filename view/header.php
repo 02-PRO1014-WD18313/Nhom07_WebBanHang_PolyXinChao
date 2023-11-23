@@ -36,12 +36,12 @@
                 </a>
             </div>
             <div class="col-lg-4 col-6 text-left">
-                <form action="">
+                <form action="index.php?act=timkiem" method="post">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for products">
+                        <input name="search" type="text" class="form-control" placeholder="Tìm kiếm sản phẩm">
                         <div class="input-group-append">
-                            <span class="input-group-text bg-transparent text-primary">
-                                <i class="fa fa-search"></i>
+                            <span class="input-group-text bg-transparent text-primary" style="height: 39px; border: none;">
+                                <a href="" class="xoa"><button class="btn btn-warning" type="submit" name="timkiem" value="btn"><i class="fa fa-search"></i></button></a>
                             </span>
                         </div>
                     </div>
