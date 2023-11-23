@@ -108,5 +108,4 @@ default:
 
 
 include "view/footer.php";
-
 ?>
