@@ -21,8 +21,31 @@
                     <span>Chưa có tài khoản? </span>
                     <a href="?act=dangky1">Đăng ký!</a>
                 </div>
-                <input type="submit" value="Đăng Nhập" name="dangnhap1" style="background-color: #4CAF50; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer;">
+                <input type="submit" onclick="return vali()" value="Đăng Nhập" name="dangnhap1" style="background-color: #4CAF50; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer;">
                 </form>
+                <?php
+                    
+                    if(isset($thongbao)&&($thongbao!="")){
+                        echo $thongbao;
+                    }
+                ?>
             </div>
         </div>
 </div>
+<script>
+  function vali(){
+    var exampleInputEmail1 = document.getElementById('exampleInputEmail1');
+    if(exampleInputEmail1.value==""){
+        alert('Yêu cầu nhập dữ tên đăng nhập');
+        exampleInputEmail1.focus();
+        return false;
+    }
+    var exampleInputPassword1 = document.getElementById('exampleInputPassword1');
+    if(exampleInputPassword1.value==""){
+        alert('Yêu cầu nhập mật khẩu');
+        exampleInputPassword1.focus();
+        return false;
+    }
+    return true;
+  }
+</script>

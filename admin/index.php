@@ -5,7 +5,8 @@
  include "../model/pdo.php";
  include "../model/danhmuc.php";
  include "../model/sanpham.php";
-
+ include "../model/taikhoan.php";
+ $listsanpham=loadall_sanpham("",0);
  //controller
 if(isset($_GET['act'])){
     $act=$_GET['act'];
@@ -18,14 +19,24 @@ if(isset($_GET['act'])){
             //kiem tra xem ng dung co click vaof nut add hay k
             if(isset($_POST['themmoi'])&&($_POST['themmoi'])){
                 $tenloai=$_POST['tenloai'];
-                insert_danhmuc($tenloai);
-                $thongbao="them thanh cong";
+                $errors=[];
+
+                if(empty($tenloai)){
+                    $errors['tenloai'] = 'Yêu cầu nhập vào tên danh mục';
+                }
+                if(empty($errors)){
+                    insert_danhmuc($tenloai);
+                    $thongbao="them thanh cong";
+                }
+                
+                
             }
             include "danhmuc/add.php";
             break;
         case 'deletedm':
             if(isset($_GET['id'])&&$_GET['id']>0){
-                delete_danhmuc($_GET['id']);
+                $id=$_GET['id'];
+                deletedanhmuc_from_product ($id);
             }
             $listdanhmuc=loadall_danhmuc();
                 include "danhmuc/list.php";
@@ -57,16 +68,43 @@ if(isset($_GET['act'])){
                 $anhsp=$_FILES['anhsp']['name'];
                 $target_dir = "../upload/";
                 $target_file = $target_dir . basename($_FILES["anhsp"]["name"]);
+                $created_at = date("Y-m-d H-i-s");
                 if (move_uploaded_file($_FILES["anhsp"]["tmp_name"], $target_file)) {
                     //echo "The file ". htmlspecialchars( basename( $_FILES["anhsp"]["name"])). " has been uploaded.";
                     } else {
                     // echo "Sorry, there was an error uploading your file.";
                     }
-
                 $iddm=$_POST['iddm'];
-                insert_sanpham($tensp,$giasp,$anhsp,$mmota,$iddm);
-                $thongbao="them thanh cong";
-            }    
+
+                $errors=[];
+                if(empty($tensp)){
+                    $errors['tensp'] = 'Yêu cầu nhập vào tên sản phẩm';
+                }
+                if(empty($giasp)){
+                    $errors['giasp'] = 'Yêu cầu nhập giá tên sản phẩm';
+                }
+                if(empty($mmota)){
+                    $errors['mmota'] = 'Yêu cầu nhập mô tả tên sản phẩm';
+                }else{
+                    if(strlen($mmota) <6){
+                        $errors['mmota'] = 'Mô tả lớn hơn 6 ký tự';
+                    }
+                }
+                }
+                if(empty($anhsp)){
+                    $errors['anhsp'] = 'Yêu cầu chọn ảnh cho sản phẩm';
+                }
+                if(empty($iddm)){
+                    $errors['iddm'] = 'Yêu cầu chọn danh mục cho sản phẩm';
+                }
+
+
+                if(empty($errors)){
+                    insert_sanpham($tensp,$giasp,$anhsp,$created_at,$mmota,$iddm);
+                    $thongbao="them thanh cong";
+                }
+               
+            
             $listdanhmuc=loadall_danhmuc();
             include "sanpham/add.php";
             break;
@@ -119,6 +157,20 @@ if(isset($_GET['act'])){
                 update_sanpham($id,$tensp,$giasp,$mmota,$anhsp,$iddm);
                 $thongbao="update thanh cong";
             }
+            include "sanpham/list.php";
+
+        case 'listtk':
+            $listtaikhoan=loadall_taikhoan();
+            include "taikhoan/list.php";
+            break;
+
+        case 'xoatk':
+            if(isset($_GET['id'])&&$_GET['id']>0){
+                delete_taikhoan($_GET['id']);
+            }
+            $listtaikhoan=loadall_taikhoan("",0);
+                include "taikhoan/list.php";
+                break;      
         }
     }else{
         include "home.php";

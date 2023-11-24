@@ -21,4 +21,9 @@
         $dm=pdo_query_one($sql);
         return $dm;
     }
+    function deletedanhmuc_from_product ($id){
+        deleteAll ($id);
+        $sql = "DELETE FROM `danhmuc` WHERE `danhmuc`.`id`=$id";
+        pdo_execute($sql);  
+    }
 ?>
