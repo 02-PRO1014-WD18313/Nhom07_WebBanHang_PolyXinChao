@@ -34,7 +34,23 @@ if((isset($_GET['act']))&&($_GET['act']!="")){
             $tendm=load_ten_dm($iddm);
             include "view/sptk.php";
             break;
+        
+        case 'sanphamall':
+            if(isset($_POST['kyw'])&&($_POST['kyw']!="")){
+                $kyw=$_POST['kyw'];
+            }else{
+                $kyw="";
+            }
+            if(isset($_GET['iddm'])&&($_GET['iddm']>0)){
+                $iddm=$_GET['iddm'];
+            }else{
+                $iddm=0;
+            }   
 
+            $tk=loadall_sanpham($kyw,$iddm);
+            $tendm=load_ten_dm($iddm);
+            include "view/sptk.php";
+            break;
             
         case 'spct':
             if(isset($_GET['idsp'])&&($_GET['idsp']>0)){
@@ -94,13 +110,13 @@ if((isset($_GET['act']))&&($_GET['act']!="")){
             break;  
         
         case 'sanphamtu1den2':
-            include "boloc.php";
-
-        case 'dangnhap':
-            include "view/contact.php";
-            break;
-        case 'dangky':
-            include "view/contact.php";
+            if(isset($_POST['timkiem'])&& ($_POST['timkiem'])){
+                $kyw=$_POST['search'];
+            }else{
+                $kyw='';
+            }
+            $boloc=load_sanpham_tu_10_20();
+            include "view/boloc.php";
             break;
         case 'dangnhap1':
             if(isset($_POST['dangnhap1'])&&($_POST['dangnhap1']>0)){
@@ -112,7 +128,11 @@ if((isset($_GET['act']))&&($_GET['act']!="")){
                     header('location: index.php?');
                     // $thongbao="bạn đã đăng nhập thành công!";
                 }else{
-                    $thongbao="Tài khoản k tồn tại. Vui lòng kiểm tra hoặc đăng ký!";
+                    $thongbao='
+                    <div class="alert alert-danger" role="alert">
+                    Tài khoản k tồn tại. Vui lòng kiểm tra hoặc đăng ký!
+                    </div>';
+                   
                 }
             }
             include "view/taikhoan/dangnhap.php";
@@ -124,8 +144,43 @@ if((isset($_GET['act']))&&($_GET['act']!="")){
                 $pass=$_POST['pass'];   
                 $address=$_POST['address'];
                 $tel=$_POST['tel'];
-                insert_taikhoan($user,$email,$pass,$address,$tel);
-                $thongbao="Đã đăng ký thành công. Vui lòng đăng nhập để thực hiện chức năng bình luận and đặt hàng";
+                
+                $errors = [];
+                if(empty($user)){
+                    $errors['user'] = 'Tên đăng nhập không được để trống';
+                }else{
+                    if(strlen($user) <6){
+                        $errors['user'] = 'Tên đăng nhập phải lớn hơn 6 ký tự';
+                    }
+                }
+
+                if(empty($email)){
+                    $errors['email'] = 'email không được để trống';
+                }else{
+                    $checkEmail = filter_var($email, FILTER_VALIDATE_EMAIL);
+                    if(!$checkEmail){
+                        $errors['email'] = 'Email không đúng định dạng';
+                    }
+                }
+
+                if(empty($tel)){
+                    $errors['tel'] = 'Số điện thoại không được để trống';
+                }
+
+                if(empty($address)){
+                    $errors['address'] = 'Địa chỉ không được để trống';
+                }
+
+                if(empty($pass)){
+                    $errors['pass'] = 'Mật khẩu không được để trống';
+                }
+                if(empty($errors)){
+                    insert_taikhoan($user,$email,$pass,$address,$tel);
+                    $thongbao='
+                        <div class="alert alert-success" role="alert">
+                            Đăng ký thành công. Bây giờ bạn có thể đăng nhập!
+                        </div>';
+                }
             }
             include "view/taikhoan/dangky.php";
             break;

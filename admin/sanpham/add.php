@@ -10,19 +10,23 @@
         </div>
         <div class="form-group">
             <label for="">Tên sản phẩm</label>
-            <input type="text" placeholder="Nhập Tên sản phẩm" class="form-control" name="tensp" required />
+            <input type="text" placeholder="Nhập Tên sản phẩm" class="form-control" name="tensp" />
+            <span style="color: red"><?php echo !empty($errors['tensp'])?$errors['tensp']:false ?></span> 
         </div>
         <div class="form-group">
             <label for="">Giá sản phẩm</label>
-            <input type="text" placeholder="Nhập Tên sản phẩm" class="form-control" name="giasp" required />
+            <input type="text" placeholder="Nhập Tên sản phẩm" class="form-control" name="giasp" />
+            <span style="color: red"><?php echo !empty($errors['giasp'])?$errors['giasp']:false ?></span> 
         </div>
         <div class="form-group">
             <label for="">Ảnh sản phẩm</label>
-            <input type="file" class="form-control" name="anhsp" required />
+            <input type="file" class="form-control" name="anhsp"/>
+            <span style="color: red"><?php echo !empty($errors['anhsp'])?$errors['anhsp']:false ?></span> 
         </div>
         <div class="form-group">
             <label for="">Mô tả sản phẩm</label>
-            <input type="text" placeholder="Nhập Tên sản phẩm" class="form-control" name="mmota" required />
+            <input type="text" placeholder="Nhập Tên sản phẩm" class="form-control" name="mmota" />
+            <span style="color: red"><?php echo !empty($errors['mmota'])?$errors['mmota']:false ?></span> 
         </div>
         <div class="form-group">
             <label for="">Danh mục</label>
@@ -35,7 +39,8 @@
                         <option value="'.$id.'">'.$name.'</option>';
                     }
                 ?>
-            </select>
+                <span style="color: red"><?php echo !empty($errors['iddm'])?$errors['iddm']:false ?></span> 
+            </select>        
         </div>
         <button class="btn btn-success" name="themmoi" type="submit" value="1" >Them moi</button>
         <?php

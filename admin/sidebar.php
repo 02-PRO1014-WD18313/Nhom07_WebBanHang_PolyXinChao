@@ -127,7 +127,7 @@
                      </a>
                      <ul class="nav nav-treeview">
                          <li class="nav-item">
-                             <a href="?module=subject&action=lists" class="nav-link">
+                             <a href="index.php?act=listtk" class="nav-link">
                                  <i class="far fa-circle nav-icon"></i>
                                  <p>Danh sách</p>
                              </a>
