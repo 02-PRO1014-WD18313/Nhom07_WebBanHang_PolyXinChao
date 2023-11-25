@@ -1,11 +1,12 @@
  <!-- Products Start -->
-    <div class="container-fluid pt-5 pb-3">
+ <div class="container-fluid pt-5 pb-3">
         <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Sản phẩm nổi bật</span></h2>
         <div class="row px-xl-5">
         <?php
          $i=0;
          foreach ($spnew as $sp) {
             extract($sp);
+            $gh="index.php?act=addtocart&id".$id;
             $linksp="index.php?act=spct&idsp=".$id;
             $gh="index.php?act=addtocart&idsp=".$id;
             $anhsp=$img_path.$img;
@@ -16,7 +17,8 @@
             }
             echo '
             <div class="col-lg-3 col-md-4 col-sm-6 pb-1 '.$mr.'">
-                <div class="product-item bg-light mb-4">
+            <form action="index.php?act=addtocart" method="post">
+                <div class="product-item bg-light mb-4">       
                     <div class="product-img position-relative overflow-hidden">
                         <img class="view/img-fluid w-100" src="'.$anhsp.'" alt="">
                         <div class="product-action">
@@ -39,12 +41,19 @@
                             <small class="far fa-star text-primary mr-1"></small>
                             <small>(99)</small>
                         </div>
+                            <input type="hidden" name="id" value="'.$id.'">
+                            <input type="hidden" name="name" value="'.$name.'">
+                            <input type="hidden" name="img" value="'.$img.'">
+                            <input type="hidden" name="price" value="'.$price.'">
+                            
+                            <button type="submit" value="btn" name="addtocart" class="btn btn-success">Thêm vào giỏ</button>
+                            <button type="submit" value="btn" name="" class="btn btn-danger">Mua ngay</button>
                     </div>
                 </div>
+                </form>
             </div>';
             $i+1;
-            }
-            ?>
+            }?>
     </div>
     <!-- Products End -->
 

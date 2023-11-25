@@ -51,8 +51,10 @@
             <?php
                 if (isset($_SESSION['user']) && ($_SESSION['user'] != "")) {
                     $username = $_SESSION['user']['user'];
-
                     echo '<h4>' . $username . '</h4>';
+                    if ($_SESSION['user']['role'] == 1){
+                        echo '<a href="admin/index.php">Quản trị</a><br>';
+                    }
                     echo '<a href="index.php?act=thoat">Đăng xuất</a>';
                 } else {
                 ?>
