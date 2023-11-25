@@ -4,8 +4,8 @@ function loadall_taikhoan(){
        $listtaikhoan=pdo_query($sql);
        return $listtaikhoan;
 }
-    function insert_taikhoan($user,$email,$pass,$address,$tel){
-        $sql="INSERT INTO taikhoan(user,email,pass,address,tel) values('$user','$email','$pass','$address','$tel')";
+    function insert_taikhoan($user,$email,$pass,$address,$tel,$role){
+        $sql="INSERT INTO taikhoan(user,email,pass,address,tel,role) values('$user','$email','$pass','$address','$tel','$role')";
         pdo_execute($sql); 
     }
 
@@ -25,8 +25,13 @@ function loadall_taikhoan(){
         $sp=pdo_query_one($sql);
         return $sp;
     }
-    function  update_taikhoan($id,$user,$pass,$email,$address,$tel){
-            $sql="UPDATE taikhoan SET user='".$user."', pass='".$pass."', email='".$email."',  address='".$address."', tel='".$tel."' WHERE id=".$id;
+    function  update_taikhoan($id,$user,$pass,$email,$address,$tel,$role){
+            $sql="UPDATE taikhoan SET user='".$user."', pass='".$pass."', email='".$email."',  address='".$address."', tel='".$tel."', role='".$role."' WHERE id=".$id;
         pdo_execute($sql);
+    }
+    function loadone_taikhoan($id){
+        $sql="SELECT * FROM taikhoan WHERE  id=".$id;
+        $tkh=pdo_query_one($sql);
+        return $tkh;
     }
 ?>
