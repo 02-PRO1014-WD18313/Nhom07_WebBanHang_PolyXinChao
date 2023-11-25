@@ -27,6 +27,7 @@
                                 <div id="product-carousel" class="carousel slide" data-ride="carousel">
                                     <div class="carousel-inner bg-light">
                                         <div class="carousel-item active">
+
                                             <img class="w-100 h-100" src="'.$anhsp.'" alt="Image">
                                         </div>
                                         <div class="carousel-item">
@@ -64,18 +65,13 @@
                                 <p class="mb-4">'.$description.'</p>
                                 <div class="d-flex mb-3">
                                 <strong class="text-dark mr-3">Sizes:</strong>
+                                <?php
+                                ?>
+                                
                                 <form>
                                     <div class="custom-control custom-radio custom-control-inline">
                                         <input type="radio" class="custom-control-input" id="size-3" name="size">
-                                        <label class="custom-control-label" for="size-3">M</label>
-                                    </div>
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="custom-control-input" id="size-4" name="size">
-                                        <label class="custom-control-label" for="size-4">L</label>
-                                    </div>
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="custom-control-input" id="size-5" name="size">
-                                        <label class="custom-control-label" for="size-5">XL</label>
+                                        <label class="custom-control-label" for="size-3">'.$name_size.'</label>
                                     </div>
                                 </form>
                             </div>
@@ -84,7 +80,7 @@
                                 <form>
                                         <div class="custom-control custom-radio custom-control-inline">
                                             <input type="radio" class="custom-control-input" id="color-1" name="color">
-                                            <label class="custom-control-label" for="color-1">trân châu khoai môn</label>
+                                            <label class="custom-control-label" for="color-1"><?=$id_tp?></label>
                                     </div>
                                     <div class="custom-control custom-radio custom-control-inline">
                                         <input type="radio" class="custom-control-input" id="color-2" name="color">
@@ -159,10 +155,7 @@
     </div>
     </form>
     ';
-    
-    ?>
-    <!-- Shop Detail End -->
-
+?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
         <script>

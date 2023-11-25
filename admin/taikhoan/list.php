@@ -2,6 +2,8 @@
     <div class="container py-4">
             <h3 style="color: blue">Danh sách tài khoản người dùng</h3>
             <hr>
+            <a href="index.php?act=addtk" ><button class="btn btn-success">Thêm tài khoản mới <i class="fa fa-plus"></i></button></a>
+            <hr>
         <form action="index.php?act=listtk" method="POST">
             <div class="row">
                     <div class="col-4">
@@ -34,7 +36,8 @@
                         <th scope="col"width="8%">email</th>
                         <th scope="col">Địa chỉ</th>
                         <th scope="col" >điện thoại</th>
-                        <th scope="col">IP</th>
+                        <th scope="col" >role</th>
+                        <th scope="col" width="10%">Thăng chức</th>
                         <th scope="col" width="5%">Xóa</th>
                     </tr>
                 </thead>
@@ -42,6 +45,7 @@
                 <?php
                     foreach($listtaikhoan as $taikhoan){
                         extract($taikhoan);
+                        $suatk = "index.php?act=suatk&id=" . $id;
                         $xoatk="index.php?act=xoatk&id=" .$id;
                         //show danh muc ra
                         echo '<tr>
@@ -53,6 +57,7 @@
                         <td>'.$address.'</td>
                         <td>'.$tel.'</td>
                         <td>'.$role.'</td>
+                        <td> <a href="' . $suatk . '" class="btn btn-warning"><i class="fa fa-edit"></i></a></td>    
                         <td><a href="'.$xoatk.'" class="xoa"><button class="btn btn-danger" type="button" name="timkiem" value="btn"><i class="fa fa-trash"></i></button></a>
                     </tr>';
                     }

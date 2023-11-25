@@ -45,8 +45,10 @@
                 <thead>
                     <tr style="background-color: #C6E2FF;">
                         <th scope="col" width="3%">Mã sp</th>
-                        <th scope="col">Tên sản phẩm</th>
+                        <th scope="col"  width="15%">Tên sản phẩm</th>
                         <th scope="col">Ảnh sản phẩm</th>
+                        <th scope="col">Size</th>
+                        <th scope="col">Topping</th>
                         <th scope="col"width="8%">Giá sp</th>
                         <th scope="col">Mô tả sản phẩm</th>
                         <th scope="col" width="10%">Lượt bán sp</th>
@@ -72,6 +74,8 @@
                         <td>' . $id . '</td>
                         <td>' . $name . '</td>
                         <td>' . $anhsp . '</td>
+                        <td>' . $id_size . '</td>
+                        <td>' . $id_tp . '</td>
                         <td>' . $price . '</td>
                         <td>' . $description . '</td>
                         <td>' . $view . '</td>

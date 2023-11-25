@@ -8,6 +8,7 @@
             extract($sp);
             $gh="index.php?act=addtocart&id".$id;
             $linksp="index.php?act=spct&idsp=".$id;
+            $gh="index.php?act=addtocart&idsp=".$id;
             $anhsp=$img_path.$img;
             if(($i==2)||($i==5)||($i==8)){
                $mr="";
