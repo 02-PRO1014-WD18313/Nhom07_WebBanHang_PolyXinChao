@@ -30,16 +30,44 @@
         </div>
         <div class="form-group">
             <label for="">Danh mục</label>
-            <select name="iddm" id="">
+            <select name="iddm" id=""><option>---Chọn theo loại---</option>
                 <?php
                     foreach($listdanhmuc as $danhmuc){
                         extract($danhmuc);
                         echo '
-                        <option>---Chọn theo loại---</option>
+                        
                         <option value="'.$id.'">'.$name.'</option>';
                     }
                 ?>
                 <span style="color: red"><?php echo !empty($errors['iddm'])?$errors['iddm']:false ?></span> 
+            </select>        
+        </div>
+        <div class="form-group">
+            <label for="">Size</label>
+            <select name="id_size" id=""> <option>---Chọn theo loại---</option>
+                <?php
+                    foreach($listsize as $size){
+                        extract($size);
+                        echo '
+                       
+                        <option value="'.$id.'">'.$name.'</option>';
+                    }
+                ?>
+                <span style="color: red"><?php echo !empty($errors['id_size'])?$errors['id_size']:false ?></span> 
+            </select>        
+        </div>
+        <div class="form-group">
+            <label for="">Topping</label>
+            <select name="id_tp" id=""><option>---Chọn theo loại---</option>
+                <?php
+                    foreach($listtopping as $topping){
+                        extract($topping);
+                        echo '
+                        
+                        <option value="'.$id.'">'.$name.'</option>';
+                    }
+                ?>
+                <span style="color: red"><?php echo !empty($errors['id_tp'])?$errors['id_tp']:false ?></span> 
             </select>        
         </div>
         <button class="btn btn-success" name="themmoi" type="submit" value="1" >Them moi</button>
