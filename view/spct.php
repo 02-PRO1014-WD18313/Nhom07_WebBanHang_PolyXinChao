@@ -50,7 +50,7 @@
                             </div>
                             <div class="col-lg-7 h-auto mb-30">
                             <div class="h-100 bg-light p-30">
-                                <h3><?=$name?></h3>
+                                <h3>'.$name.'</h3>
                                 <div class="d-flex mb-3">
                                     <div class="text-primary mr-2">
                                         <small class="fas fa-star"></small>
@@ -61,8 +61,8 @@
                                     </div>
                                     <small class="pt-1">(99 Reviews)</small>
                                 </div>
-                                <h3 class="font-weight-semi-bold mb-4"><?=number_format($price, 0, ".", ".")?> VND</h3>
-                                <p class="mb-4"><?=$description?></p>
+                                <h3 class="font-weight-semi-bold mb-4">'.number_format($price, 0, ".", ".").'VND</h3>
+                                <p class="mb-4">'.$description.'</p>
                                 <div class="d-flex mb-3">
                                 <strong class="text-dark mr-3">Sizes:</strong>
                                 <?php
@@ -71,7 +71,7 @@
                                 <form>
                                     <div class="custom-control custom-radio custom-control-inline">
                                         <input type="radio" class="custom-control-input" id="size-3" name="size">
-                                        <label class="custom-control-label" for="size-3"><?=$name_size?></label>
+                                        <label class="custom-control-label" for="size-3">'.$name_size.'</label>
                                     </div>
                                 </form>
                             </div>
@@ -146,7 +146,7 @@
                     <div class="tab-content">
                         <div class="tab-pane fade show active" id="tab-pane-1">
                             <h4 class="mb-3">Product Description</h4>
-                            <p><?=$description?></p>
+                            <p>'.$description.'</p>
                         </div>         
                     </div>
                 </div>
