@@ -59,6 +59,13 @@
             $sql="UPDATE sanpham SET name='".$tensp."', price='".$giasp."', description='".$mmota."',  iddm='".$iddm."' WHERE id=".$id;
         pdo_execute($sql);
     }
+
+    function load_sanpham_tu_10_20(){
+        $sql ="selec * from sanpham where price between 10000 and 20000 order by id desc limit 0,15";
+        $listsanpham = pdo_query($sql);
+        return $listsanpham;
+    }
+
     function deleteAll ($id){
         $sql = "DELETE FROM `sanpham` WHERE `sanpham`.`iddm`=".$id;
         pdo_execute($sql);
@@ -78,4 +85,5 @@
         $listsanpham = pdo_query($sql);
         return $listsanpham;
     }
+
 ?>

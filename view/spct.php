@@ -16,25 +16,28 @@
 
     <!-- Shop Detail Start -->
    
-            <?php extract(($onesp));
-                    $img=$img_path.$img; ?>
-                   
+            <?php extract(($onesp));?>
+                <?php
+                    $anhsp=$img_path.$img;
+                    echo ' 
+                    <form action="index.php?act=addtocart" method="post">
                     <div class="container-fluid pb-5">
                         <div class="row px-xl-5">
                             <div class="col-lg-5 mb-30">
                                 <div id="product-carousel" class="carousel slide" data-ride="carousel">
                                     <div class="carousel-inner bg-light">
                                         <div class="carousel-item active">
-                                            <img class="w-100 h-100" src="<?=$img?>" alt="Image">
+
+                                            <img class="w-100 h-100" src="'.$anhsp.'" alt="Image">
                                         </div>
                                         <div class="carousel-item">
-                                            <img class="w-100 h-100" src="<?=$img?>" alt="Image">
+                                            <img class="w-100 h-100" src="'.$anhsp.'" alt="Image">
                                         </div>
                                         <div class="carousel-item">
-                                            <img class="w-100 h-100" src="<?=$img?>" alt="Image">
+                                            <img class="w-100 h-100" src="'.$anhsp.'" alt="Image">
                                         </div>
                                         <div class="carousel-item">
-                                            <img class="w-100 h-100" src="<?=$img?>" alt="Image">
+                                            <img class="w-100 h-100" src="'.$anhsp.'" alt="Image">
                                         </div>
                                     </div>
                                     <a class="carousel-control-prev" href="#product-carousel" data-slide="prev">
@@ -107,8 +110,11 @@
                                         </button>
                                     </div>
                                 </div>
-                                <a href="index.php?act=giohang"><button name="addtocart" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To
-                                    Cart</button></a>
+                                <input type="hidden" name="id" value="'.$id.'">
+                                <input type="hidden" name="name" value="'.$name.'">
+                                <input type="hidden" name="img" value="'.$img.'">
+                                <input type="hidden" name="price" value="'.$price.'">
+                                <button type="submit" value="btn" name="addtocart" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i>Thêm vào giỏ</button>
                             </div>
                             <div class="d-flex pt-2">
                                 <strong class="text-dark mr-2">Share on:</strong>
@@ -147,9 +153,9 @@
             </div>
         </div>
     </div>
-    
-    <!-- Shop Detail End -->
-
+    </form>
+    ';
+?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
         <script>
