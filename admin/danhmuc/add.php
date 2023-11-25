@@ -6,7 +6,8 @@
     <form method="post" action="index.php?act=adddm">
         <div class="form-group">
             <label for="">Tên danh mục</label>
-            <input type="text" placeholder="Nhập tên danh mục" class="form-control" name="tenloai" required />
+            <input type="text" placeholder="Nhập tên danh mục" class="form-control" name="tenloai" />
+            <span style="color: red"><?php echo !empty($errors['tenloai'])?$errors['tenloai']:false ?></span> 
         </div>
         <button class="btn btn-success" name="themmoi" type="submit" value="1" >Them moi</button>
         <?php

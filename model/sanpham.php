@@ -1,6 +1,6 @@
 <?php
-    function insert_sanpham($tensp,$giasp,$anhsp,$mmota,$iddm){
-        $sql="INSERT INTO sanpham(name,price,img,description,iddm) values('$tensp','$giasp','$anhsp','$mmota','$iddm')";
+    function insert_sanpham($tensp,$giasp,$anhsp,$created_at,$mmota,$iddm){
+        $sql="INSERT INTO sanpham(name,price,img,created_at,description,iddm) values('$tensp','$giasp','$anhsp','$created_at','$mmota','$iddm')";
         pdo_execute($sql); 
     }
 
@@ -63,22 +63,10 @@
         $listsanpham = pdo_query($sql);
         return $listsanpham;
     }
-    // function checktrungsp($id) {
-    //     $vitri = -1;
-    //     for ($i = 0; $i < sizeof($_SESSION["mycart"]); $i++) {
-    //         if ($_SESSION["mycart"][$i][0] == $id) {
-    //             $vitri = $i;
-    //             break;  
-    //         }
-    //     }
-    //     return $vitri;
-    // }
-    
-    // function updatesoluong($vitri) {
-    //     if ($vitri != -1) {
-    //         $_SESSION["mycart"][$vitri][4] += 1;  
-    //     }
-    //     return $vitri;
-    // }
-    
+
+    function deleteAll ($id){
+        $sql = "DELETE FROM `sanpham` WHERE `sanpham`.`iddm`=".$id;
+        pdo_execute($sql);
+    }
+
 ?>

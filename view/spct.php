@@ -60,7 +60,7 @@
                                     </div>
                                     <small class="pt-1">(99 Reviews)</small>
                                 </div>
-                                <h3 class="font-weight-semi-bold mb-4">'.$price.'</h3>
+                                <h3 class="font-weight-semi-bold mb-4">'.number_format($price, 0, ".", ".").'VND</h3>
                                 <p class="mb-4">'.$description.'</p>
                                 <div class="d-flex mb-3">
                                 <strong class="text-dark mr-3">Sizes:</strong>
