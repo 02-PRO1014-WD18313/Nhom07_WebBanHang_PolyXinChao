@@ -63,4 +63,22 @@
         $listsanpham = pdo_query($sql);
         return $listsanpham;
     }
+    // function checktrungsp($id) {
+    //     $vitri = -1;
+    //     for ($i = 0; $i < sizeof($_SESSION["mycart"]); $i++) {
+    //         if ($_SESSION["mycart"][$i][0] == $id) {
+    //             $vitri = $i;
+    //             break;  
+    //         }
+    //     }
+    //     return $vitri;
+    // }
+    
+    // function updatesoluong($vitri) {
+    //     if ($vitri != -1) {
+    //         $_SESSION["mycart"][$vitri][4] += 1;  
+    //     }
+    //     return $vitri;
+    // }
+    
 ?>

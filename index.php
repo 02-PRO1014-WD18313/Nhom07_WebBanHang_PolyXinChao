@@ -12,7 +12,9 @@ include "global.php";
 include "model/sanpham.php";
 $spnew=loadall_sanpham_home();
 
-if(!isset($_SESSION['mycart'])) $_SESSION['mycart']=[];
+if (!isset($_SESSION['mycart'])) {
+    $_SESSION['mycart'] = array();
+}
 
 
 if((isset($_GET['act']))&&($_GET['act']!="")){
@@ -57,31 +59,97 @@ if((isset($_GET['act']))&&($_GET['act']!="")){
         case 'spct':
             include "view/spct.php";
             break;
-            case 'giohang':
+        case 'giohang':
                 include "view/giohang.php";
                 break;
         case 'addtocart':
-            //add thong tin san pham tu form 
-            if(isset($_POST['giohang'])&&($_POST['giohang']>0)){
-                $id=$_POST['id'];
-                $name=$_POST['name'];
-                $img=$_POST['img'];
-                $price=$_POST['price'];
-                $soluong=1;
-                $ttien=$soluong * $price;
-                $spadd=[$id,$name,$img,$price,$soluong,$ttien];
-            }
-            include "view/cart/viewcart.php";
-            break;
+            // Add product information from the form 
+            if (isset($_POST['addtocart']) && ($_POST['addtocart']) >0) {
+                $id = $_POST['id'];
+                $name = $_POST['name'];
+                $img = $_POST['img'];
+                $price = $_POST['price'];
+                if(isset($_POST['soluong']) && ($_POST['soluong'])>0){
+                    $soluong=$_POST['soluong'];
+                }else{
+                    $soluong = 1;  
+                }
+                $fg=0;
+                // kiểm tra sp có tồn tại trong giỏ hàng hay không
+                $i=0;
+                foreach ($_SESSION['mycart'] as $item) {
+                    if ($item[1] === $name) { // Use $name instead of $tensp
+                        $slnew = $soluong + $item[4];
+                        $_SESSION['mycart'][$i][4] = $slnew;                        
+                        $fg = 1;
+                        break;
+                    }
+                    $i++;
+                }                
+                if($fg==0){
+                    $sl=$soluong * $price;
+                    $ttien = $soluong * $price;
+                    $spadd = [$id, $name, $img, $price, $soluong, $ttien];
+                    array_push($_SESSION['mycart'], $spadd);
+                   
+                }
+            }            
+            // include "view/cart/mybill.php";
+            // break;
+            header("location: index.php?act=viewcart");
 
+        case 'viewcart':
+                include "view/cart/viewcart.php";
+                break; 
+                   
         case 'delcart':
-            if(isset($_GET['idcart'])){
-                array_splice($_SESSION['mycart'],$GET['mycart'],1);
-            }else{
-                $_SESSION['mycart']=[];
+            if (isset($_GET['idcart'])) {
+                $idcart = $_GET['idcart'];
+                array_splice($_SESSION['mycart'], $idcart, 1);
+            } else {
+                $_SESSION['mycart'] = [];
             }
             header('location: index.php?act=viewcart');
-            break;  
+            break;
+        case 'billcomfirm':
+            if(isset($_SESSION['dathang']) && ($_SESSION['dathang'])){
+                $name=$_POST['user'];
+                $email=$_POST['email'];
+                $address=$_POST['address'];
+                $tel=$_POST['tel'];
+                $pttt=$_POST['pttt'];
+                $ngaydathang = date('h:i:sa d-m-Y');
+                $tongdonhang=tongdonhang();
+
+                $idbill= insert_bill($iduser,$name,$address,$tel,$email,$pttt,$ngaydathang,$tongdonhang);
+                
+                foreach($_SESSION['mycart'] as $cart){
+                    insert_cart($_SESSION['user']['id'],$cart[0],$cart[2],$cart[1],$cart[3],$cart[4],$cart[5],$idbill);
+                }
+            }
+            $bill= loadone_bill($id);
+            $billct=loadall_cart($id);
+            include "view/cart/billcomfirm.php";
+            break; 
+            // include "view/cart/billcomfirm.php";
+            break; 
+        // case 'thanhtoan':
+        //     if(isset($_SESSION['thanhtoan']) && ($_SESSION['thanhtoan'])){
+        //         // Lấy dữ liệu
+        //         $tongdonhang=$_POST['tongdonhang'];
+        //         $name=$_POST['name'];
+        //         $address=$_POST['address'];
+        //         $email=$_POST['email'];
+        //         $tel=$_POST['tel'];
+        //         $pttt=$_POST['pttt'];
+        //         // mã đơn hàng
+        //         $madh="POLYXINCHAO"rand(0,999999);
+        //         // TẠO ĐƠN HÀNG và trả về 1 id đơn hàng
+        //         $iddh=taodonhang($madh,$tongdonhang,$pttt,$name,$address,$email,$tel);
+                
+        //     }
+        //     include "view/contact.php";
+        //     break;
 
         case 'timkiem':
             if(isset($_POST['timkiem'])&& ($_POST['timkiem'])){
