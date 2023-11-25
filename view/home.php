@@ -7,6 +7,7 @@
          foreach ($spnew as $sp) {
             extract($sp);
             $linksp="index.php?act=spct&idsp=".$id;
+            $gh="index.php?act=addtocart&idsp=".$id;
             $anhsp=$img_path.$img;
             if(($i==2)||($i==5)||($i==8)){
                $mr="";
@@ -19,7 +20,7 @@
                     <div class="product-img position-relative overflow-hidden">
                         <img class="view/img-fluid w-100" src="'.$anhsp.'" alt="">
                         <div class="product-action">
-                            <a class="btn btn-outline-dark btn-square" href="'.$linksp.'"><i class="fa fa-shopping-cart"></i></a>
+                            <a class="btn btn-outline-dark btn-square" href="'.$gh.'"><i class="fa fa-shopping-cart"></i></a>
                             <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
                             <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
                             <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-search"></i></a>

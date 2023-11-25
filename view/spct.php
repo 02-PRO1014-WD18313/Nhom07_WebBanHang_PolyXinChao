@@ -16,26 +16,25 @@
 
     <!-- Shop Detail Start -->
    
-            <?php extract(($onesp));?>
-                <?php
-                    $img=$img_path.$img;
-                    echo ' 
+            <?php extract(($onesp));
+                    $img=$img_path.$img; ?>
+                   
                     <div class="container-fluid pb-5">
                         <div class="row px-xl-5">
                             <div class="col-lg-5 mb-30">
                                 <div id="product-carousel" class="carousel slide" data-ride="carousel">
                                     <div class="carousel-inner bg-light">
                                         <div class="carousel-item active">
-                                            <img class="w-100 h-100" src="'.$img.'" alt="Image">
+                                            <img class="w-100 h-100" src="<?=$img?>" alt="Image">
                                         </div>
                                         <div class="carousel-item">
-                                            <img class="w-100 h-100" src="'.$img.'" alt="Image">
+                                            <img class="w-100 h-100" src="<?=$img?>" alt="Image">
                                         </div>
                                         <div class="carousel-item">
-                                            <img class="w-100 h-100" src="'.$img.'" alt="Image">
+                                            <img class="w-100 h-100" src="<?=$img?>" alt="Image">
                                         </div>
                                         <div class="carousel-item">
-                                            <img class="w-100 h-100" src="'.$img.'" alt="Image">
+                                            <img class="w-100 h-100" src="<?=$img?>" alt="Image">
                                         </div>
                                     </div>
                                     <a class="carousel-control-prev" href="#product-carousel" data-slide="prev">
@@ -48,7 +47,7 @@
                             </div>
                             <div class="col-lg-7 h-auto mb-30">
                             <div class="h-100 bg-light p-30">
-                                <h3>'.$name.'</h3>
+                                <h3><?=$name?></h3>
                                 <div class="d-flex mb-3">
                                     <div class="text-primary mr-2">
                                         <small class="fas fa-star"></small>
@@ -59,22 +58,17 @@
                                     </div>
                                     <small class="pt-1">(99 Reviews)</small>
                                 </div>
-                                <h3 class="font-weight-semi-bold mb-4">'.number_format($price, 0, ".", ".").'VND</h3>
-                                <p class="mb-4">'.$description.'</p>
+                                <h3 class="font-weight-semi-bold mb-4"><?=number_format($price, 0, ".", ".")?> VND</h3>
+                                <p class="mb-4"><?=$description?></p>
                                 <div class="d-flex mb-3">
                                 <strong class="text-dark mr-3">Sizes:</strong>
+                                <?php
+                                ?>
+                                
                                 <form>
                                     <div class="custom-control custom-radio custom-control-inline">
                                         <input type="radio" class="custom-control-input" id="size-3" name="size">
-                                        <label class="custom-control-label" for="size-3">M</label>
-                                    </div>
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="custom-control-input" id="size-4" name="size">
-                                        <label class="custom-control-label" for="size-4">L</label>
-                                    </div>
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="custom-control-input" id="size-5" name="size">
-                                        <label class="custom-control-label" for="size-5">XL</label>
+                                        <label class="custom-control-label" for="size-3"><?=$name_size?></label>
                                     </div>
                                 </form>
                             </div>
@@ -83,7 +77,7 @@
                                 <form>
                                         <div class="custom-control custom-radio custom-control-inline">
                                             <input type="radio" class="custom-control-input" id="color-1" name="color">
-                                            <label class="custom-control-label" for="color-1">trân châu khoai môn</label>
+                                            <label class="custom-control-label" for="color-1"><?=$id_tp?></label>
                                     </div>
                                     <div class="custom-control custom-radio custom-control-inline">
                                         <input type="radio" class="custom-control-input" id="color-2" name="color">
@@ -146,15 +140,14 @@
                     <div class="tab-content">
                         <div class="tab-pane fade show active" id="tab-pane-1">
                             <h4 class="mb-3">Product Description</h4>
-                            <p>'.$description.'</p>
+                            <p><?=$description?></p>
                         </div>         
                     </div>
                 </div>
             </div>
         </div>
-    </div>';
+    </div>
     
-    ?>
     <!-- Shop Detail End -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
