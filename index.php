@@ -96,12 +96,6 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                 $name = $_POST['name'];
                 $img = $_POST['img'];
                 $price = $_POST['price'];
-                $soluong = 1;
-                $ttien = $soluong * $price;
-                $spadd = [$id, $name, $img, $price, $soluong, $ttien];
-            }
-            include "view/cart/viewcart.php";
-            break;
                 if(isset($_POST['soluong']) && ($_POST['soluong'])>0){
                     $soluong=$_POST['soluong'];
                 }else{
@@ -126,7 +120,7 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                     array_push($_SESSION['mycart'], $spadd);
                    
                 }
-                        
+            }            
             // include "view/cart/mybill.php";
             // break;
             header("location: index.php?act=viewcart");
@@ -136,7 +130,6 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                    
         case 'delcart':
             if (isset($_GET['idcart'])) {
-                array_splice($_SESSION['mycart'], $GET['mycart'], 1);
                 $idcart = $_GET['idcart'];
                 array_splice($_SESSION['mycart'], $idcart, 1);
             } else {
@@ -163,8 +156,6 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
             $bill= loadone_bill($id);
             $billct=loadall_cart($id);
             include "view/cart/billcomfirm.php";
-            break; 
-            // include "view/cart/billcomfirm.php";
             break; 
 
         case 'timkiem':
