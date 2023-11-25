@@ -147,8 +147,7 @@ if((isset($_GET['act']))&&($_GET['act']!="")){
             $billct=loadall_cart($id);
             include "view/cart/billcomfirm.php";
             break; 
-            // include "view/cart/billcomfirm.php";
-            break; 
+ 
         // case 'thanhtoan':
         //     if(isset($_SESSION['thanhtoan']) && ($_SESSION['thanhtoan'])){
         //         // Lấy dữ liệu
