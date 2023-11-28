@@ -1,6 +1,6 @@
 
     <!-- Checkout Start -->
-    <form action="index.php?act=billcomfirm" method="post">
+    <form action="" method="post">
 
     <div class="container-fluid">
         <div class="row px-xl-5">
@@ -37,14 +37,6 @@
                             <label>Số di động</label>
                             <input class="form-control" type="text" placeholder="+84" name="tel" value="<?=$tel?>">
                         </div>
-                        <!-- <div class="col-md-6 form-group">
-                            <label>Chọn cửa hàng</label>
-                            <select class="custom-select">
-                                <option selected>địa chỉ...</option>
-                                <option>số 4 chu văn an</option>
-                                <option>số 282 tràng tiền</option>
-                            </select>
-                        </div> -->
                     </div>
                 </div>
                 <div class="mb-5">
@@ -52,17 +44,29 @@
                     <div class="bg-light p-30">
                         <div class="form-group">
                             <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="pttt" id="directcheck" value="1">
-                                <label class="custom-control-label" for="directcheck">Thanh toán qua ví momo</label>
+                                <input type="radio" class="custom-control-input" name="pttt" id="momo_atm" value="momo_atm">
+                                <label class="custom-control-label" for="momo_atm">Thanh Toán Qua ATM MoMo</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" name="pttt" id="momo_qr" value="momo_qr">
+                                <label class="custom-control-label" for="momo_qr">Thanh Toán Qua Mã QR MoMo</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" name="pttt" id="vnpay" value="vnpay">
+                                <label class="custom-control-label" for="vnpay">Thanh Toán Qua VPPay</label>
                             </div>
                         </div>
                         <div class="form-group mb-4">
                             <div class="custom-control custom-radio">
                                 <input type="radio" class="custom-control-input" name="pttt" id="banktransfer" value="1">
-                                <label class="custom-control-label" for="banktransfer">Thanh toán khi nhận hàng</label>
+                                <label class="custom-control-label" for="banktransfer">Thanh Toán Khi Nhận Hàng</label>
                             </div>
                         </div>
-                        <button value="dh" type="submit" name="dathang" class="btn btn-block btn-primary font-weight-bold py-3">Đặt hàng</button>
+                        <button value="dh" type="submit" name="redirect" class="btn btn-block btn-primary font-weight-bold py-3">Đặt hàng</button>
                     </div>
                 </div>
             </div>
@@ -110,11 +114,12 @@
                                    </div>
                                </div>';
                         ?>
+                                            
                 </div>
             </div>
         </div>
     </div>
-
+                            <input type="hidden" name="tong" value="<?php echo !empty($tongcong)?$tongcong:false ?>">
     </form>
     <!-- Checkout End -->
 </body>
