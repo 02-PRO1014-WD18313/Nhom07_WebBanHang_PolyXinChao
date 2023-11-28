@@ -27,7 +27,7 @@
                 Tổng quan - begin
                  -->
                  <li class="nav-item">
-                     <a href="" class="nav-link">
+                     <a href="http://localhost/Nhom07_WebBanHang_PolyXinChao/admin/index.php" class="nav-link">
                          <i class="nav-icon fa fa-tachometer-alt"></i>
                          <p>
                              Tổng quan
@@ -118,6 +118,67 @@
                     subject - begin 
                 -->
                 <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fa fa-file"></i>
+                            <p>
+                                Ql Thuộc tính biến thể
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                    <ul class="nav nav-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fa fa-file"></i>
+                                <p>
+                                    Quản lý size
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="index.php?act=listsz" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Danh sách</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="index.php?act=addsz" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Thêm mới</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </ul>
+
+                    <ul class="nav nav-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fa fa-file"></i>
+                                <p>
+                                    Quản lý topping
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="index.php?act=listtp" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Danh sách</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="index.php?act=addtp" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Thêm mới</p>
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    </ul>
+                     
+                </li>
+                         
+                 
+
+                <li class="nav-item has-treeview">
                      <a href="#" class="nav-link">
                          <i class="nav-icon fa fa-plus"></i>
                          <p>
@@ -179,18 +240,33 @@
                      <a href="#" class="nav-link">
                          <i class="nav-icon fa fa-plus"></i>
                          <p>
-                             Thống kê
+                             Quản lý thống kê
                              <i class="fas fa-angle-left right"></i>
                          </p>
                      </a>
                      <ul class="nav nav-treeview">
                          <li class="nav-item">
-                             <a href="?module=subject&action=lists" class="nav-link">
+                             <a href="index.php?act=thongke" class="nav-link">
                                  <i class="far fa-circle nav-icon"></i>
                                  <p>Danh sách</p>
                              </a>
                          </li>
+                         <li class="nav-item">
+                             <a href="index.php?act=bieudo" class="nav-link">
+                                 <i class="far fa-circle nav-icon"></i>
+                                 <p>Biểu đồ</p>
+                             </a>
+                         </li>
                      </ul>
+                 </li>
+                 <li class="nav-item has-treeview">
+                     <a href="index.php?act=bieudo" class="nav-link">
+                         <i class="nav-icon fa fa-plus"></i>
+                         <p>
+                                Biểu đồ
+                             <i class="fas fa-angle-left right"></i>
+                         </p>
+                     </a>
                  </li>
 
                  <!-- 

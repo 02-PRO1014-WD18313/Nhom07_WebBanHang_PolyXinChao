@@ -8,6 +8,7 @@ include "../model/sanpham.php";
 include "../model/taikhoan.php";
 include "../model/size.php";
 include "../model/topping.php";
+include "../model/cart.php";
 $listsanpham = loadall_sanpham("", 0);
 
 //controller
@@ -58,6 +59,112 @@ if (isset($_GET['act'])) {
             $listdanhmuc = loadall_danhmuc();
             include "danhmuc/list.php";
             break;
+///////////////controler bien the
+        case 'listsz':
+            $listsize = loadall_size();
+            include "size/list.php";
+            break;
+
+        case 'addsz':
+            //kiem tra xem ng dung co click vaof nut add hay k
+            if (isset($_POST['themmoi']) && ($_POST['themmoi'])) {
+                $tensize = $_POST['tensize'];
+                $price= $_POST['price'];
+                $errors = [];
+
+                if (empty($tensize)) {
+                    $errors['tensize'] = 'Yêu cầu nhập vào tên danh mục';
+                }
+                if (empty($errors)) {
+                    insert_size($tensize,$price);
+                    $thongbao = "them thanh cong";
+                }
+            }
+            include "size/add.php";
+            break;
+
+        case 'deletesz':
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                $id = $_GET['id'];
+                delete_size($id);
+            }
+            $listsize = loadall_size();
+            include "size/list.php";
+            break;
+
+        case 'suasz':
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                $sz = loadone_size($_GET['id']);
+            }
+            include "size/edit.php";
+            break;
+        case 'updatesz':
+            if (isset($_POST['update']) && ($_POST['update'])) {
+                $id = $_POST['id'];
+                $tensize = $_POST['tensize'];
+                $price= $_POST['price'];
+                update_size($id,$tensize,$price);
+                $thongbao = "update thanh cong";
+            }
+            $listsize = loadall_size();
+            include "size/list.php";
+            break;
+
+
+//////////////////////////////////////////////////////////////////////////topping
+        case 'listtp':
+            $listtopping = loadall_topping();
+            include "topping/list.php";
+            break;
+
+        case 'addtp':
+            //kiem tra xem ng dung co click vaof nut add hay k
+            if (isset($_POST['themmoi']) && ($_POST['themmoi'])) {
+                $tentp = $_POST['tentp'];
+                $price= $_POST['price'];
+                $total= $_POST['total'];
+                $errors = [];
+
+                if (empty($tentp)) {
+                    $errors['tentp'] = 'Yêu cầu nhập vào tên danh mục';
+                }
+                if (empty($errors)) {
+                    insert_topping($tentp,$price,$total);
+                    $thongbao = "them thanh cong";
+                }
+            }
+            include "topping/add.php";
+            break;
+
+        case 'deletetp':
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                $id = $_GET['id'];
+                delete_topping($id);
+            }
+            $listtopping = loadall_topping();
+            include "topping/list.php";
+            break;
+
+        case 'suatp':
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                $tp = loadone_topping($_GET['id']);
+            }
+            include "topping/edit.php";
+            break;
+        case 'updatetp':
+            if (isset($_POST['update']) && ($_POST['update'])) {
+                $id = $_POST['id'];
+                $tentp = $_POST['tentp'];
+                $price= $_POST['price'];
+                $total= $_POST['total'];
+                update_topping($id,$tentp,$price,$total);
+                $thongbao = "update thanh cong";
+            }
+            $listtopping = loadall_topping();
+            include "topping/list.php";
+            break;
+
+
 
             /////////////////////controller sản phẩm
         case 'addsp':
@@ -243,6 +350,16 @@ if (isset($_GET['act'])) {
                 $thongbao = "update thanh cong";
             }
             include "taikhoan/list.php";
+
+        case 'thongke':
+            $listthongke=loadall_thongke();
+            include "thongke/list.php";
+            break;
+        
+        case 'bieudo':
+            $listthongke=loadall_thongke();
+            include "thongke/bieudo.php";
+            break;
     }
 } else {
     include "home.php";
