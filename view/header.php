@@ -121,10 +121,23 @@
                             <a href="index.php?act=contact" class="nav-item nav-link">Liên hệ</a>
                         </div>
                         <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
-                            <a href="index.php?act=addtocart" class="btn px-0 ml-3">
-                                <i class="fas fa-shopping-cart text-primary"></i>
-                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
-                            </a>
+                        <a href="index.php?act=addtocart" class="btn px-0 ml-3">
+                            <i class="fas fa-shopping-cart text-primary"></i>
+                            <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">
+                                <?php
+                                    $uniqueProductIDs = array();
+                                    $totalQuantity = 0;
+                                    foreach ($_SESSION['mycart'] as $cart) {
+                                        $productID = $cart[0]; 
+                                        if (!in_array($productID, $uniqueProductIDs)) {
+                                            $uniqueProductIDs[] = $productID;
+                                            $totalQuantity += 1; 
+                                        }
+                                    }
+                                    echo $totalQuantity;
+                                ?>
+                            </span>
+                        </a>
                         </div>
                     </div>
                 </nav>

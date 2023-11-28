@@ -5,6 +5,7 @@ include "model/taikhoan.php";
 include "model/cart.php";
 include "model/pdo.php";
 include "model/danhmuc.php";
+include "model/binhluan.php";
 $dsdm = loadall_danhmuc();
 include "view/header.php";
 include "global.php";
@@ -53,11 +54,15 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
             break;
 
         case 'spct':
+            if(isset($_POST['guibinhluan'])){
+                insert_binhluan($_POST['idpro'], $_POST['noidung']);
+            }
             if (isset($_GET['idsp']) && ($_GET['idsp'] > 0)) {
                 $id = $_GET['idsp'];
                 $onesp = loadone_sanpham($id);
                 extract($onesp);
                 $sp_cung_loai = load_sanpham_cungloai($id, $iddm);
+                $binhluan = loadall_binhluan($_GET['idsp']);
                 include "view/spct.php";
             } else {
                 include "view/home.php";
@@ -138,25 +143,36 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
             header('location: index.php?act=viewcart');
             break;
         case 'billcomfirm':
-            if(isset($_SESSION['dathang']) && ($_SESSION['dathang'])){
-                $name=$_POST['user'];
+            if(isset($_POST['dathang']) && ($_POST['dathang'])){
+                if(isset($_SESSION['user'])){
+                    $iduser = $_SESSION['user']['id'];
+                } else {
+                    $iduser = 0;
+                }
+                // đăng nhập để đặt hàng            
+                if ($iduser === 0) {
+                    header("Location: index.php?act=dangnhap1");
+                    exit();
+                }
+                $name=$_POST['name'];
                 $email=$_POST['email'];
                 $address=$_POST['address'];
                 $tel=$_POST['tel'];
-                $pttt=$_POST['pttt'];
+                $pttt=0;
                 $ngaydathang = date('h:i:sa d-m-Y');
                 $tongdonhang=tongdonhang();
+
                 $idbill= insert_bill($iduser,$name,$address,$tel,$email,$pttt,$ngaydathang,$tongdonhang);
                 
                 foreach($_SESSION['mycart'] as $cart){
                     insert_cart($_SESSION['user']['id'],$cart[0],$cart[2],$cart[1],$cart[3],$cart[4],$cart[5],$idbill);
                 }
+                unset($_SESSION['mycart']);
+                $bill= loadone_bill($id);
+                $billct=loadall_cart($id);
+                include "view/cart/billcomfirm.php";
+                break; 
             }
-            $bill= loadone_bill($id);
-            $billct=loadall_cart($id);
-            include "view/cart/billcomfirm.php";
-            break; 
-            
         case 'timkiem':
             if (isset($_POST['timkiem']) && ($_POST['timkiem'])) {
                 $kyw = $_POST['search'];

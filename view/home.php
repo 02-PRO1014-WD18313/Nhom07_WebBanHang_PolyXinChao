@@ -6,9 +6,7 @@
          $i=0;
          foreach ($spnew as $sp) {
             extract($sp);
-            $gh="index.php?act=addtocart&id".$id;
             $linksp="index.php?act=spct&idsp=".$id;
-            $gh="index.php?act=addtocart&idsp=".$id;
             $anhsp=$img_path.$img;
             if(($i==2)||($i==5)||($i==8)){
                $mr="";
@@ -22,7 +20,7 @@
                     <div class="product-img position-relative overflow-hidden">
                         <img class="view/img-fluid w-100" src="'.$anhsp.'" alt="">
                         <div class="product-action">
-                            <a class="btn btn-outline-dark btn-square" href="'.$gh.'"><i class="fa fa-shopping-cart"></i></a>
+                            <a class="btn btn-outline-dark btn-square" href=""><button type="submit" value="btn" name="addtocart"><i class="fa fa-shopping-cart"></i></button></a>
                             <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
                             <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
                             <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-search"></i></a>
@@ -46,8 +44,7 @@
                             <input type="hidden" name="img" value="'.$img.'">
                             <input type="hidden" name="price" value="'.$price.'">
                             
-                            <button type="submit" value="btn" name="addtocart" class="btn btn-success">Thêm vào giỏ</button>
-                            <button type="submit" value="btn" name="" class="btn btn-danger">Mua ngay</button>
+
                     </div>
                 </div>
                 </form>
@@ -107,7 +104,7 @@
                 <div class="product-img position-relative overflow-hidden">
                     <img class="view/img-fluid w-100" src="'.$anhsp.'" alt="">
                     <div class="product-action">
-                        <a class="btn btn-outline-dark btn-square" href="'.$linksp.'"><i class="fa fa-shopping-cart"></i></a>
+                        <a class="btn btn-outline-dark btn-square" href=""><button type="submit" value="btn" name="addtocart"><i class="fa fa-shopping-cart"></i></button></a>
                         <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
                         <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
                         <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-search"></i></a>
