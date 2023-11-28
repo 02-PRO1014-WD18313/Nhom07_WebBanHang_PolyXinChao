@@ -62,7 +62,20 @@
                                 <label class="custom-control-label" for="banktransfer">Thanh toán khi nhận hàng</label>
                             </div>
                         </div>
-                        <button value="dh" type="submit" name="dathang" class="btn btn-block btn-primary font-weight-bold py-3">Đặt hàng</button>
+                        <?php
+                            if (isset($_SESSION['user'])) {
+                                $iduser = $_SESSION['user']['id'];
+                                $buttonLabel = "Đặt hàng";
+                                $buttonClass = "btn btn-block btn-primary font-weight-bold py-3";
+                            } else {
+                                $iduser = 0;
+                                $buttonLabel = "Đăng nhập để đặt hàng";
+                                $buttonClass = "btn btn-block btn-secondary font-weight-bold py-3 disabled";
+                            }
+                        ?>
+
+                            <button type="submit" value="Đặt hàng" name="dathang" class="<?php echo $buttonClass; ?>"><?php echo $buttonLabel; ?></button>
+
                     </div>
                 </div>
             </div>
