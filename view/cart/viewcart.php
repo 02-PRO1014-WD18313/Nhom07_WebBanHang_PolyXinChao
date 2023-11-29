@@ -20,7 +20,7 @@
                     <thead class="thead-dark">
                         <tr>
                             <th>Sản phẩm</th>
-                            <th>Size-topping</th>
+                            <th>Tên sản phẩm</th>
                             <th>Giá</th>
                             <th>Số lượng</th>
                             <th>Tổng</th>
@@ -39,11 +39,11 @@
                     $xoasp = '<a href="index.php?act=delcart&idcart=' . $i . '"><button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button></a>';
                 
                     echo '<tr>
-                            <td class="align-middle" style="vertical-align: middle;"><img src="' . $hinh . '" alt="" style="width: 50px;">' . $cart[1] . '</td>
-                            <td class="align-middle" style="vertical-align: middle;">...</td>
-                            <td class="align-middle" style="vertical-align: middle;">' . $cart[3] . '</td>
+                            <td class="align-middle" style="vertical-align: middle;"><img src="' . $hinh . '" alt="" style="width: 50px;"></td>
+                            <td class="align-middle" style="vertical-align: middle;">' . $cart[1] . '</td>
+                            <td class="align-middle" style="vertical-align: middle;">' .  number_format($cart[3], 0, ".", "."). ' đ</td>
                             <td  class="align-middle" style="vertical-align: middle;">'.$cart[4].'</td>
-                            <td class="align-middle" style="vertical-align: middle;">' . $ttien . '</td>
+                            <td class="align-middle" style="vertical-align: middle;">' . number_format($ttien, 0, ".", ".") . ' đ</td>
                             <td class="align-middle" style="vertical-align: middle;">' . $xoasp . '</td>
                           </tr>';
                 }
@@ -68,17 +68,17 @@
                                 <div class="border-bottom pb-2">
                                     <div class="d-flex justify-content-between mb-3">
                                         <h6>Tổng phụ</h6>
-                                        <h6>' . number_format($tong, 0, ".", ".") . ' VNĐ</h6>
+                                        <h6>' . number_format($tong, 0, ".", ".") . ' đ</h6>
                                     </div>
                                     <div class="d-flex justify-content-between">
                                         <h6 class="font-weight-medium">phí vận chuyển</h6>
-                                        <h6 class="font-weight-medium">' . number_format($ship, 0, ".", "."). ' VNĐ</h6>
+                                        <h6 class="font-weight-medium">' . number_format($ship, 0, ".", "."). ' đ</h6>
                                     </div>
                                 </div>
                                 <div class="pt-2">
                                     <div class="d-flex justify-content-between mt-2">
                                         <h5>Tổng cộng</h5>
-                                        <h5>' . number_format($tongcong, 0, ".", ".") . ' VNĐ</h5>
+                                        <h5>' . number_format($tongcong, 0, ".", ".") . ' đ</h5>
                                     </div>
                                     <a href="index.php?act=checkout"> <button class="btn btn-block btn-primary font-weight-bold my-3 py-3">Tiến hành đặt hàng</button></a>
                 

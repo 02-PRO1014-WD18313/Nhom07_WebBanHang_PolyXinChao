@@ -351,6 +351,21 @@ if (isset($_GET['act'])) {
             }
             include "taikhoan/list.php";
 
+            /////
+        case 'binhluan':
+            $listbinhluan=loadall_binhluan(0);
+                include "binhluan/binhluan.php";
+                break;
+
+        case 'xoabl':
+            if(isset($_GET['id'])&&$_GET['id']>0){
+                delete_binhluan($_GET['id']);
+
+            }
+            $listbinhluan=loadall_binhluan("",0);
+                include "binhluan/list.php";
+                break;
+                
         case 'thongke':
             $listthongke=loadall_thongke();
             include "thongke/list.php";

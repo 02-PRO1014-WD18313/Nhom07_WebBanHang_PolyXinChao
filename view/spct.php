@@ -61,7 +61,7 @@
                                     </div>
                                     <small class="pt-1">(99 Reviews)</small>
                                 </div>
-                                <h3 class="font-weight-semi-bold mb-4">'.number_format($price, 0, ".", ".").'VND</h3>
+                                <h3 class="font-weight-semi-bold mb-4">'.number_format($price, 0, ".", ".").'đ</h3>
                                 <p class="mb-4">'.$description.'</p>
                                 <div class="d-flex mb-3">
                                 <strong class="text-dark mr-3">Sizes:</strong>
@@ -136,34 +136,19 @@
                         </div>
                     </div>
                     
-        <div class="row px-xl-5">
-            <div class="col">
-                <div class="bg-light p-30">
-                    <div class="nav nav-tabs mb-4">
-                        <a class="nav-item nav-link text-dark active" data-toggle="tab" href="#tab-pane-1">Mô tả</a>
-                        <a class="nav-item nav-link text-dark" data-toggle="tab" href="#tab-pane-2">Bình luận</a>
-                    </div>
-                    <div class="tab-content">
-                        <div class="tab-pane fade show active" id="tab-pane-1">
-                            <h4 class="mb-3">Product Description</h4>
-                            <p>'.$description.'</p>
-                        </div>         
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     </form>
     ';
+    include "view/binhluan.php";
 ?>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
         <script>
             $(document).ready(function(){
                 $("#binhluan").load("view/binhluan/binhluanform.php", {idpro: <?=$id?>});
             });
         </script>
-        <div class="row" id="binhluan"></div>
+        <div class="row" id="binhluan"></div> -->
 
         <div class="container-fluid pt-5 pb-3">
         <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Sản phẩm liên quan</span></h2>
@@ -186,7 +171,7 @@
                                 <div class="text-center py-4">
                                     <a class="h6 text-decoration-none text-truncate" href="'.$linksp.'">'.$name.'</a>
                                     <div class="d-flex align-items-center justify-content-center mt-2">
-                                        <h5>$123.00</h5><h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                                        <h5>'.number_format($price, 0, ".", ".").'đ</h5><h6 class="text-muted ml-2"><del>'.number_format($price, 0, ".", ".").'đ</del></h6>
                                     </div>
                                     <div class="d-flex align-items-center justify-content-center mb-1">
                                         <small class="fa fa-star text-primary mr-1"></small>
