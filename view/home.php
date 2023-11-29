@@ -29,7 +29,7 @@
                     <div class="text-center py-4">
                         <a class="h5 text-decoration-none text-truncate"href="'.$linksp.'">'.$name.'</a>
                         <div class="d-flex align-items-center justify-content-center mt-2">
-                            <h5>'.number_format($price, 0, ".", ".").'VND</h5><h6 class="text-muted ml-2"><del>'.number_format($price, 0, ".", ".").'VND</del></h6>
+                            <h5>'.number_format($price, 0, ".", ".").'đ</h5><h6 class="text-muted ml-2"><del>'.number_format($price, 0, ".", ".").'đ</del></h6>
                         </div>
                         <div class="d-flex align-items-center justify-content-center mb-1">
                             <small class="fa fa-star text-primary mr-1"></small>
@@ -113,7 +113,7 @@
                 <div class="text-center py-4">
                     <a class="h4 text-decoration-none text-truncate"href="'.$linksp.'">'.$name.'</a>
                     <div class="d-flex align-items-center justify-content-center mt-2">
-                        <h5>'.number_format($price, 0, ".", ".").'VND</h5><h6 class="text-muted ml-2"><del>'.number_format($price, 0, ".", ".").'VND</del></h6>
+                        <h5>'.number_format($price, 0, ".", ".").'đ</h5><h6 class="text-muted ml-2"><del>'.number_format($price, 0, ".", ".").'đ</del></h6>
                     </div>
                     <div class="d-flex align-items-center justify-content-center mb-1">
                     <small class="fa fa-star text-primary mr-1"></small>

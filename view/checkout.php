@@ -1,6 +1,6 @@
 
     <!-- Checkout Start -->
-    <form action="" method="post">
+    <form action="index.php?act=billcomfirm" method="post">
 
     <div class="container-fluid">
         <div class="row px-xl-5">
@@ -40,7 +40,7 @@
                     </div>
                 </div>
                 <div class="mb-5">
-                    <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Thanh toán</span></h5>
+                    <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Phương thức thanh toán</span></h5>
                     <div class="bg-light p-30">
                         <div class="form-group">
                             <div class="custom-control custom-radio">
@@ -78,10 +78,7 @@
                             }
                         ?>
 
-                            <button type="submit" value="Đặt hàng" name="dathang" class="<?php echo $buttonClass; ?>"><?php echo $buttonLabel; ?></button>
-
-
-                        <button value="dh" type="submit" name="redirect" class="btn btn-block btn-primary font-weight-bold py-3">Đặt hàng</button>
+                        <button value="dh" type="submit" name="dathang"  class="<?php echo $buttonClass; ?>"><?php echo $buttonLabel; ?></button>
                     </div>
                 </div>
             </div>
@@ -92,43 +89,45 @@
                 <div class="bg-light p-30 mb-5">
                     <div class="border-bottom">
                         <!-- <h6 class="mb-3">Sản phẩm</h6> -->
-                        <div class="d-flex justify-content-between" >
-                            <p>Tên sản phẩm</p>
-                            <p>Số lượng</p>
-                            <p>Giá</p>
+                        <div class="d-flex justify-content-between">
+                        <p style="font-weight: 700;" class="col-5">Tên sản phẩm</p>
+                        <p style="font-weight: 700;" class="col-4,5">Số lượng</p>
+                        <p style="font-weight: 700;" class="col-2.5">Giá</p>
+                    </div>
+                    <?php
+                    $tong = 0;
+                    foreach ($_SESSION['mycart'] as $i => $cart) {
+                        $hinh = $img_path . $cart[2];
+                        $ttien = $cart[3] * $cart[4];
+                        $tong += $ttien;
+                        echo '<div class="d-flex justify-content-between">
+                            <p class="col-6">'.$cart[1].'</p>
+                            <p class="col-3,5">X'.$cart[4].'</p>
+                            <p class="col-2,5">'.number_format($cart[3], 0, ".", ".").' đ</p>
+                        </div>';
+                    }
+                    $ship = 15000;
+                    $tongcong=$tong+$ship;
+
+                    echo '</div>
+                        
+                    <div class="border-bottom pt-3 pb-2">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h7 class="col-8">Tổng</h7>
+                            <h7 class="col-7">'.number_format($tong, 0, ".", ".").' đ</h7>
                         </div>
-                        <?php
-                            $tong = 0;
-                            foreach ($_SESSION['mycart'] as $i => $cart) {
-                                $hinh = $img_path . $cart[2];
-                                $ttien = $cart[3] * $cart[4];
-                                $tong += $ttien;
-                                echo '<div class="d-flex justify-content-between">
-                                <p>'.$cart[1].'</p>
-                                <p>X'.$cart[4].'</p>
-                                <p>'.number_format($cart[3], 0, ".", ".").' VNĐ</p>
-                                </div>';
-                                }
-                            $ship = 15000;
-                            $tongcong=$tong+$ship;
-                               echo'</div>
-                               <div class="border-bottom pt-3 pb-2">
-                                   <div class="d-flex justify-content-between mb-3">
-                                       <h6>Tổng</h6>
-                                       <h6>'.number_format($tong, 0, ".", ".").' VNĐ</h6>
-                                   </div>
-                                   <div class="d-flex justify-content-between">
-                                       <h6 class="font-weight-medium">Ship</h6>
-                                       <h6 class="font-weight-medium">'.number_format($ship, 0, ".", ".").' VNĐ</h6>
-                                   </div>
-                               </div>
-                               <div class="pt-2">
-                                   <div class="d-flex justify-content-between mt-2">
-                                       <h5>Số Tiền Cần Thanh toán</h5>
-                                       <h5>'.number_format($tongcong, 0, ".", ".").' VNĐ</h5>
-                                   </div>
-                               </div>';
-                        ?>
+                        <div class="d-flex justify-content-between">
+                            <h7 class="font-weight-medium col-8">Ship</h7>
+                            <h7 class="font-weight-medium col-4">'.number_format($ship, 0, ".", ".").' đ</h7>
+                        </div>
+                    </div>
+                    <div class="pt-2">
+                        <div class="d-flex justify-content-between mt-2">
+                            <h6 class="col-8">Số Tiền Cần Thanh toán</h6>
+                            <h5 class="col-4">'.number_format($tongcong, 0, ".", ".").'đ</h5>
+                        </div>
+                    </div>';
+                    ?>
                                             
                 </div>
             </div>

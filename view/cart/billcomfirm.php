@@ -24,7 +24,7 @@
         <p>Cảm ơn bạn đã mua hàng chúc bạn ngon miệng. Đơn hàng của bạn sẽ nhanh chóng được được xác nhận.</p>
     </div>
     <div class="back-to-home">
-        <a href="?act=index.php" class="btn btn-primary btn-lg">Quay lại trang chủ</a>
+        <a href="index.php?act=index" class="btn btn-primary btn-lg">Quay lại trang chủ</a>
     </div>
 </div>
 

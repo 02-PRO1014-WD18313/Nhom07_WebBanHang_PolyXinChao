@@ -1,6 +1,9 @@
 <?php
 session_start();
 ob_start();
+if (!isset($_SESSION['mycart'])) {
+    $_SESSION['mycart'] = array();
+}
 include "model/taikhoan.php";
 include "model/cart.php";
 include "model/pdo.php";

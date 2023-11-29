@@ -47,8 +47,7 @@
                             </div>
                             <?php foreach($binhluan as $value): ?>
                                 <div class="review">
-                                    <div><?php echo $value['user']; ?></div>
-                                    <div class="name">(<?php echo date("d/m/Y", strtotime($value['ngaybinhluan'])); ?>)</div>
+                                    <div class="name"><?php echo $value['user']; ?> (<?php echo date("d/m/Y", strtotime($value['ngaybinhluan'])); ?>)</div>
                                     <div class="content"><?php echo $value['noidung']; ?></div>
                                 </div> 
                             <?php endforeach; ?>

@@ -112,11 +112,7 @@
 
 
                             <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Trang <i class="fa fa-angle-down mt-1"></i></a>
-                                <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
-                                    <a href="index.php?act=giohang" class="dropdown-item">Giỏ hàng</a>
-                                    <a href="index.php?act=checkout" class="dropdown-item">THỦ TỤC THANH TOÁN</a>
-                                </div>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Trang</a>
                             </div>
                             <a href="index.php?act=contact" class="nav-item nav-link">Liên hệ</a>
                         </div>
