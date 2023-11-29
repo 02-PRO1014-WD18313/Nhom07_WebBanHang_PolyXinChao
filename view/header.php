@@ -112,19 +112,28 @@
 
 
                             <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Trang <i class="fa fa-angle-down mt-1"></i></a>
-                                <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
-                                    <a href="index.php?act=giohang" class="dropdown-item">Giỏ hàng</a>
-                                    <a href="index.php?act=checkout" class="dropdown-item">THỦ TỤC THANH TOÁN</a>
-                                </div>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Trang</a>
                             </div>
                             <a href="index.php?act=contact" class="nav-item nav-link">Liên hệ</a>
                         </div>
                         <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
-                            <a href="index.php?act=addtocart" class="btn px-0 ml-3">
-                                <i class="fas fa-shopping-cart text-primary"></i>
-                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
-                            </a>
+                        <a href="index.php?act=addtocart" class="btn px-0 ml-3">
+                            <i class="fas fa-shopping-cart text-primary"></i>
+                            <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">
+                                <?php
+                                    $uniqueProductIDs = array();
+                                    $totalQuantity = 0;
+                                    foreach ($_SESSION['mycart'] as $cart) {
+                                        $productID = $cart[0]; 
+                                        if (!in_array($productID, $uniqueProductIDs)) {
+                                            $uniqueProductIDs[] = $productID;
+                                            $totalQuantity += 1; 
+                                        }
+                                    }
+                                    echo $totalQuantity;
+                                ?>
+                            </span>
+                        </a>
                         </div>
                     </div>
                 </nav>

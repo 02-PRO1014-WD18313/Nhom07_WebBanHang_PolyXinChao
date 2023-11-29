@@ -102,7 +102,7 @@ return $tong;
 }
 
 function insert_bill($iduser,$name,$address,$tel,$email,$pttt,$ngaydathang,$tongdonhang){
-    $sql="INSERT INTO bill(iduser,bill_name,bill_address,bill_tel,bill_email,bill_pttt,ngaydathang,total) values('$iduser','$name','$address','$tel','$email','$pttt','$ngaydathang','$tongdonhang')";
+    $sql = "INSERT INTO bill (iduser, bill_name, bill_address, bill_tel, bill_email, bill_pttt, ngaydathang, total) values('$iduser','$name','$address','$tel','$email','$pttt','$ngaydathang','$tongdonhang')";
     return pdo_execute_return_lastInsertId($sql);
 }
 function insert_cart($iduser,$idpro,$img,$name,$price,$soluong,$thanhtien,$idbill){
