@@ -51,11 +51,17 @@
             <?php
                 if (isset($_SESSION['user']) && ($_SESSION['user'] != "")) {
                     $username = $_SESSION['user']['user'];
-                    echo '<h4>' . $username . '</h4>';
+                    echo '<h5 type="button" style="font-size: 20px;
+                    font-weight: 700;"class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown"><i class="nav-icon fa fa-user"></i> ' . $username . '</h5>';
+                    echo'<div class="dropdown-menu dropdown-menu-right">';
                     if ($_SESSION['user']['role'] == 1){
-                        echo '<a href="admin/index.php">Quản trị</a><br>';
+                        echo ' <a href="admin/index.php" class="dropdown-item" type="button">Quản trị</a>';
+                        
                     }
-                    echo '<a href="index.php?act=thoat">Đăng xuất</a>';
+                    echo ' <a href="index.php?" class="dropdown-item" type="button">Lịch sử đặt hàng</a>
+                            <a href="index.php?act=thoat" class="dropdown-item" type="button">Đăng xuất</a>
+                            </div>';
+                        
                 } else {
                 ?>
                     <form action="?act=dangnhap1" method="post">
