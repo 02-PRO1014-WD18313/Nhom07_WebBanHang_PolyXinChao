@@ -1,9 +1,9 @@
 <section class="home_boxcenter">
     <div class="container py-4">
-        <h3 style="color: blue">Danh sách danh mục sản phẩm</h3>
-        <hr>
+        <h3 style="color: blue">Danh sách bình luận</h3>
+        <!-- <hr>
         <a href="index.php?act=adddm" ><button class="btn btn-success">Thêm danh mục mới <i class="fa fa-plus"></i></button></a>
-        <hr>
+        <hr> -->
         <form action="" method="get">
                 <div class="row">
                     <div class="col-4">
@@ -31,32 +31,30 @@
                 <thead>
                     <tr style="background-color: #C6E2FF;">
                         <th scope="col" width="3%">STT</th>
-                        <th scope="col">Tên danh mục</th>
-                        <th scope="col" width="5%">Sửa</th>
+                        <th scope="col-2">Tên người bình luận</th>
+                        <th scope="col">Nội dung</th>
+                        <th scope="col">Tên sản phẩm</th>
+                        <th scope="col">Ngày bình luận</th>
                         <th scope="col" width="5%">Xóa</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    <?php
-                        foreach($listbinhluan as $binhluan => $value){
-                            extract($binhluan);
-                        
-                            $xoabl="index.php?act=xoabl&id=" .$id;
-                            $stt=$binhluan + 1
-                            echo '<tr>
-                            <th scope="row">'.$stt.'</th>
-                            <td>'.$id.'</td>
-                            <td>'.$noidung.'</td>
-                            <td>'.$iduser.'</td>
-                            <td>'.$idpro.'</td>
-                            <td>'.$ngaybinhluan	.'</td>
-                            <td><a href="'.$xoabl.'"><input type="button" value="XOA"></a></td>
-
-                        </tr>';
-                        }
+                <?php
+                    foreach ($listbinhluan as $stt => $binhluan) {
+                        $xoabl = "index.php?act=xoabl&id=" . $binhluan['id'];
+                        $stt += 1; // Dùng dấu += để tăng giá trị của $stt
+                        echo '<tr>
+                                <th scope="row">' . $stt . '</th>
+                                <td>' . $binhluan['user'] . '</td>
+                                <td>' . $binhluan['noidung'] . '</td>
+                                <td>' . $binhluan['name'] . '</td>
+                                <td>' . $binhluan['ngaybinhluan'] . '</td>
+                                <td><a href="'.$xoabl.'" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
+                            </tr>';
+                    }
                     ?>
-                    
+         
                 </tbody>
 
             </table>

@@ -9,6 +9,7 @@ include "../model/taikhoan.php";
 include "../model/size.php";
 include "../model/topping.php";
 include "../model/cart.php";
+include "../model/binhluan.php";
 $listsanpham = loadall_sanpham("", 0);
 
 //controller
@@ -353,19 +354,19 @@ if (isset($_GET['act'])) {
 
             /////
         case 'binhluan':
-            $listbinhluan=loadall_binhluan(0);
-                include "binhluan/binhluan.php";
-                break;
-
+            $listbinhluan = load_binhluan();
+            include "binhluan/list.php";
+            break;   
+                     
         case 'xoabl':
             if(isset($_GET['id'])&&$_GET['id']>0){
                 delete_binhluan($_GET['id']);
 
             }
-            $listbinhluan=loadall_binhluan("",0);
+           // $listbinhluan=loadall_binhluan("",0);
+            $listbinhluan=load_binhluan();
                 include "binhluan/list.php";
                 break;
-                
         case 'thongke':
             $listthongke=loadall_thongke();
             include "thongke/list.php";
