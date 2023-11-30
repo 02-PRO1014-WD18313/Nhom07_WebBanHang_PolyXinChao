@@ -23,8 +23,14 @@
         .review .content {
             margin-bottom: 10px;
         }
-        .tab-content{
-            width: 1300px;
+        .row {
+            width: 100%;
+        }
+        input[type="text"] {
+            width: 100%; 
+            border: none;
+            border-bottom: 1px solid #000; 
+            padding: 5px; 
         }
     </style>
 </head>
@@ -44,10 +50,10 @@
                                     <input type="text" name="noidung">
                                     <input type="submit" name="guibinhluan" value="Gửi bình luận">
                                 </form>
-                            </div>
+                            </div><br><br>
                             <?php foreach($binhluan as $value): ?>
                                 <div class="review">
-                                    <div class="name"><?php echo $value['user']; ?> (<?php echo date("d/m/Y", strtotime($value['ngaybinhluan'])); ?>)</div>
+                                    <div class="name" style="color:black;"><?php echo $value['user']; ?> (<?php echo date("d/m/Y", strtotime($value['ngaybinhluan'])); ?>)</div>
                                     <div class="content"><?php echo $value['noidung']; ?></div>
                                 </div> 
                             <?php endforeach; ?>
