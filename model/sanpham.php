@@ -1,6 +1,6 @@
 <?php
-    function insert_sanpham($tensp,$giasp,$anhsp,$created_at,$mmota,$iddm,$id_size,$id_tp){
-        $sql="INSERT INTO sanpham(name,price,img,created_at,description,iddm,id_size,id_tp) values('$tensp','$giasp','$anhsp','$created_at','$mmota','$iddm','$id_size','$id_tp')";
+    function insert_sanpham($tensp,$giasp,$anhsp,$created_at,$mmota,$iddm,$id_size){
+        $sql="INSERT INTO sanpham(name,price,img,created_at,description,iddm,id_size) values('$tensp','$giasp','$anhsp','$created_at','$mmota','$iddm','$id_size')";
         pdo_execute($sql); 
     }
 

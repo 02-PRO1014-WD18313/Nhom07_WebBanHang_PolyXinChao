@@ -5,29 +5,15 @@
             <a href="index.php?act=addsp" ><button class="btn btn-success">Thêm sản phẩm mới <i class="fa fa-plus"></i></button></a>
             <hr>
         <form action="index.php?act=listsp" method="POST">
-            <div class="row">
-                <div class="col-4">
-                    <select name="creator_id" class="form-control">
-                        <option value="0">---Chọn người đăng---</option>
-                        <?php if (!empty($data['users'])) :
-                            foreach ($data['users'] as $key => $item) : ?>
-                        <option value="<?php echo $item['id'] ?>"><?php echo $item['name'] ?> -
-                            (<?php echo $item['email'] ?>)</option>
-                        <?php endforeach;
-                        endif; ?>
-                    </select>
-                </div>
-
-                <div class="col-6">
-                    <input type="text" name="keyword" placeholder="Danh mục tìm kiếm..." class="form-control">
-                </div>
-                <div class="col-2">
-                    <button class="btn btn-primary w-100">Tìm kiếm</button>
-                </div>
-            </div>
-            <hr>
-                <div class="hd" style="text-align: center;">
-                    <input type="text" name="kyw" class="form-control">
+                <div class="dh" style="text-align: center;">
+                    <div class="row">
+                        <div class="col-10">
+                            <input type="text" name="kyw" class="form-control"  placeholder="Nhập sản phẩm bạn muốn tìm kiếm...">
+                        </div>
+                        <div class="col-2">
+                            <button class="btn btn-primary w-100">Tìm kiếm</button>
+                        </div>
+                    </div>
                     <hr>
                         <select name="iddm" style="width: 150px; height: 30px;">
                             <option value="0" selected>Tất cả</option>
@@ -48,7 +34,6 @@
                         <th scope="col"  width="15%">Tên sản phẩm</th>
                         <th scope="col">Ảnh sản phẩm</th>
                         <th scope="col">Size</th>
-                        <th scope="col">Topping</th>
                         <th scope="col"width="8%">Giá sp</th>
                         <th scope="col">Mô tả sản phẩm</th>
                         <th scope="col" width="10%">Lượt bán sp</th>
@@ -75,7 +60,6 @@
                         <td>' . $name . '</td>
                         <td>' . $anhsp . '</td>
                         <td>' . $id_size . '</td>
-                        <td>' . $id_tp . '</td>
                         <td>' . $price . '</td>
                         <td>' . $description . '</td>
                         <td>' . $view . '</td>

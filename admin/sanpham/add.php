@@ -59,17 +59,7 @@
                         </select>
                     </div>
 
-                    <div class="col-md-3 form-group">
-                        <label>Topping</label>
-                        <select class="custom-select" name="id_tp"><option selected>toping...</option>
-                        <?php
-                            foreach($listtopping as $topping){
-                                extract($topping);
-                                echo '<option value="'.$id.'">'.$name.'</option>';
-                            }
-                        ?>
-                        </select>
-                    </div>
+                  
 
                     <div class="col-md-3 form-group">
                         <label>Giá</label>

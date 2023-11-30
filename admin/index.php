@@ -184,7 +184,7 @@ if (isset($_GET['act'])) {
                 }
                 $iddm = $_POST['iddm'];
                 $id_size = $_POST['id_size'];
-                $id_tp = $_POST['id_tp'];
+                // $id_tp = $_POST['id_tp'];
 
                 $errors = [];
                 if (empty($tensp)) {
@@ -211,19 +211,17 @@ if (isset($_GET['act'])) {
                 $errors['id_size'] = 'Yêu cầu chọn size cho sản phẩm';
             }
             
-            if (empty($id_tp)) {
-                $errors['id_tp'] = 'Yêu cầu chọn topping cho sản phẩm';
-            }
+          
 
 
 
             if (empty($errors)) {
-                insert_sanpham($tensp, $giasp, $anhsp, $created_at, $mmota, $iddm, $id_size, $id_tp);
+                insert_sanpham($tensp, $giasp, $anhsp, $created_at, $mmota, $iddm, $id_size);
                 $thongbao = "them thanh cong";
             }
 
             $listsize = loadall_size();
-            $listtopping = loadall_topping();
+            // $listtopping = loadall_topping();
             $listdanhmuc = loadall_danhmuc();
             include "sanpham/add.php";
             break;
@@ -353,18 +351,18 @@ if (isset($_GET['act'])) {
 
             /////
         case 'binhluan':
-            $listbinhluan=loadall_binhluan(0);
-                include "binhluan/binhluan.php";
-                break;
+        //     $listbinhluan=loadall_binhluan(0);
+        //         include "binhluan/binhluan.php";
+        //         break;
 
-        case 'xoabl':
-            if(isset($_GET['id'])&&$_GET['id']>0){
-                delete_binhluan($_GET['id']);
+        // case 'xoabl':
+        //     if(isset($_GET['id'])&&$_GET['id']>0){
+        //         delete_binhluan($_GET['id']);
 
-            }
-            $listbinhluan=loadall_binhluan("",0);
-                include "binhluan/list.php";
-                break;
+        //     }
+        //     $listbinhluan=loadall_binhluan("",0);
+        //         include "binhluan/list.php";
+        //         break;
                 
         case 'thongke':
             $listthongke=loadall_thongke();
@@ -375,6 +373,24 @@ if (isset($_GET['act'])) {
             $listthongke=loadall_thongke();
             include "thongke/bieudo.php";
             break;
+
+        case 'listbill':
+            if(isset($_POST['kyw'])&&($_POST['kyw']!="")){
+                $kyw=$_POST['kyw'];
+            }else{
+                $kyw="";
+            }
+            $listbill=loadall_bill($kyw,0);
+                include "donhang/list.php";
+                break;
+
+        case 'xoadh':
+            if(isset($_GET['id'])&&$_GET['id']>0){
+                delete_donhang($_GET['id']);
+            }
+            $listbill=loadall_bill("",0);
+                include "donhang/list.php";
+                break;
     }
 } else {
     include "home.php";

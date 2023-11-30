@@ -142,37 +142,7 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
             }
             header('location: index.php?act=viewcart');
             break;
-        case 'billcomfirm':
-            if(isset($_POST['dathang']) && ($_POST['dathang'])){
-                if(isset($_SESSION['user'])){
-                    $iduser = $_SESSION['user']['id'];
-                } else {
-                    $iduser = 0;
-                }
-                // đăng nhập để đặt hàng            
-                if ($iduser === 0) {
-                    header("Location: index.php?act=dangnhap1");
-                    exit();
-                }
-                $name=$_POST['name'];
-                $email=$_POST['email'];
-                $address=$_POST['address'];
-                $tel=$_POST['tel'];
-                $pttt=0;
-                $ngaydathang = date('h:i:sa d-m-Y');
-                $tongdonhang=tongdonhang();
-
-                $idbill= insert_bill($iduser,$name,$address,$tel,$email,$pttt,$ngaydathang,$tongdonhang);
-                
-                foreach($_SESSION['mycart'] as $cart){
-                    insert_cart($_SESSION['user']['id'],$cart[0],$cart[2],$cart[1],$cart[3],$cart[4],$cart[5],$idbill);
-                }
-                unset($_SESSION['mycart']);
-                $bill= loadone_bill($id);
-                $billct=loadall_cart($id);
-                include "view/cart/billcomfirm.php";
-                break; 
-            }
+        
         case 'timkiem':
             if (isset($_POST['timkiem']) && ($_POST['timkiem'])) {
                 $kyw = $_POST['search'];
@@ -263,16 +233,47 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
             header('location: index.php?');
             break;
 
-
-        case 'checkout':
+        case 'checkout':   
             if(!empty($_POST['pttt'])){
                 $tong = $_POST['tong'];
                 $pttt = $_POST['pttt'];
-                if($pttt == 'vnpay'){
-                    error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
-                    date_default_timezone_set('Asia/Ho_Chi_Minh');
-
-
+                if($pttt == 'ttoff'){
+                    if(isset($_SESSION['user'])){
+                        $iduser = $_SESSION['user']['id'];
+                    } else {
+                        $iduser = 0;
+                    }
+                    // đăng nhập để đặt hàng            
+                    if ($iduser === 0) {
+                        header("Location: index.php?act=dangnhap1");
+                        exit();
+                    }
+                    // $thanhtoan = $_POST['redirect'];
+                    $name = $_POST['name'];
+                    $email=$_POST['email'];
+                    $address=$_POST['address'];
+                    $tel=$_POST['tel'];
+                    $pttt=$_POST['pttt'];
+                    $ngaydathang = date('h:i:sa d-m-Y');
+                    $tongdonhang=tongdonhang();
+                    // $err = validate_form($user, $email, $sdt, $address);
+                    if (empty($err)) {
+                    $idbill= insert_bill($iduser,$name,$address,$tel,$email,$pttt,$ngaydathang,$tongdonhang);
+                    foreach($_SESSION['mycart'] as $cart){
+                            insert_cart($_SESSION['user']['id'],$cart[0],$cart[2],$cart[1],$cart[3],$cart[4],$cart[5],$idbill);
+                            // delete_cart($idcart);
+                            // $_SESSION['count_cart'] = count(count_cart($_SESSION['iduser']));
+                        }
+                        unset($_SESSION['mycart']);
+                        $bill= loadone_bill($id);
+                        $billct=loadall_cart($id);
+                        include "view/cart/billcomfirm.php";
+                        break; 
+                }
+            } else if($pttt == 'vnpay'){
+                error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
+                date_default_timezone_set('Asia/Ho_Chi_Minh');
+              
                 $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
                 $vnp_Returnurl = "http://localhost/Nhom07_WebBanHang_PolyXinChao/index.php?act=billcomfirm";
                 $vnp_TmnCode = "CJQLSZK0"; //Mã website tại VNPAY 
