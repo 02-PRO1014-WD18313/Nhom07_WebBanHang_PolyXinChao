@@ -18,9 +18,11 @@
                         <select name="iddm" style="width: 150px; height: 30px;">
                             <option value="0" selected>Tất cả</option>
                             <?php
-                                foreach ($listdanhmuc as $danhmuc){
-                                extract($danhmuc);
-                                echo '<option value="'.$id.'">'.$name.'</option>';
+                                foreach($listdanhmuc as $danhmuc){
+                                    extract($danhmuc);
+                                    echo '
+                                    
+                                    <option value="'.$id.'">'.$name.'</option>';
                                 }
                             ?>
                         </select>
@@ -33,7 +35,6 @@
                         <th scope="col" width="3%">Mã sp</th>
                         <th scope="col"  width="15%">Tên sản phẩm</th>
                         <th scope="col">Ảnh sản phẩm</th>
-                        <th scope="col">Size</th>
                         <th scope="col"width="8%">Giá sp</th>
                         <th scope="col">Mô tả sản phẩm</th>
                         <th scope="col" width="10%">Lượt bán sp</th>
@@ -59,7 +60,6 @@
                         <td>' . $id . '</td>
                         <td>' . $name . '</td>
                         <td>' . $anhsp . '</td>
-                        <td>' . $id_size . '</td>
                         <td>' . $price . '</td>
                         <td>' . $description . '</td>
                         <td>' . $view . '</td>

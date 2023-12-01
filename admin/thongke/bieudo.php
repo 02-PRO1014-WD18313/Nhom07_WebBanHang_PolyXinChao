@@ -91,7 +91,7 @@
         
         var barData = {
             
-            labels: ['.$thongke.', 'Dữ liệu 2', 'Dữ liệu 3', 'Dữ liệu 4', 'Dữ liệu 5','Dữ liệu 5'],
+            labels: ['Giỏ hàng', 'Lượt bán', 'Dữ liệu 3', 'Dữ liệu 4', 'Dữ liệu 5','Dữ liệu 5'],
             datasets: [{
                 label: 'Số liệu Thống Kê',
                 data: [10, 20, 60, 40, 50,30],

@@ -184,8 +184,6 @@ if (isset($_GET['act'])) {
                     // echo "Sorry, there was an error uploading your file.";
                 }
                 $iddm = $_POST['iddm'];
-                $id_size = $_POST['id_size'];
-                // $id_tp = $_POST['id_tp'];
 
                 $errors = [];
                 if (empty($tensp)) {
@@ -208,16 +206,9 @@ if (isset($_GET['act'])) {
             if (empty($iddm)) {
                 $errors['iddm'] = 'Yêu cầu chọn danh mục cho sản phẩm';
             }
-            if (empty($id_size)) {
-                $errors['id_size'] = 'Yêu cầu chọn size cho sản phẩm';
-            }
-            
-          
-
-
 
             if (empty($errors)) {
-                insert_sanpham($tensp, $giasp, $anhsp, $created_at, $mmota, $iddm, $id_size);
+                insert_sanpham($tensp, $giasp, $anhsp, $created_at, $mmota, $iddm);
                 $thongbao = "them thanh cong";
             }
 
@@ -272,7 +263,7 @@ if (isset($_GET['act'])) {
 
 
                 $iddm = $_POST['iddm'];
-                update_sanpham($id, $tensp, $giasp, $mmota, $anhsp, $iddm, $id_size, $id_tp);
+                update_sanpham($id, $tensp, $giasp, $mmota, $anhsp, $iddm,);
                 $thongbao = "update thanh cong";
             }
             include "sanpham/list.php";

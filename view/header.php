@@ -26,16 +26,15 @@
 <body>
     <!-- Topbar Start -->
 
-        <div class="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex">
-            <div class="col-lg-4">
-            
-                <a href="" class="text-decoration-none">
-                   
-                    <span class="h1 text-uppercase text-primary bg-dark px-2">POLY</span>
-                    <span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1">XINCHAO</span>
+        <div class="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex" style="width: 100%;">
+            <img src="./img1/logo1.jpg." alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="width:70px; ">
+            <div class="col-lg-4" style="margin-left: -30px;">
+                <a href="index.php" class="text-decoration-none">         
+                    <span class="h1 text-uppercase  px-2">POLY</span>
+                    <span class="h1 text-uppercase text-primary bg-dark px-2 ml-n1">XINCHAO</span>
                 </a>
             </div>
-            <div class="col-lg-4 col-6 text-left">
+            <div class="col-lg-4 col-5 text-left">
                 <form action="index.php?act=timkiem" method="post">
                     <div class="input-group">
                         <input name="search" type="text" class="form-control" placeholder="Tìm kiếm sản phẩm">
@@ -47,27 +46,36 @@
                     </div>
                 </form>
             </div>
-            <div class="col-lg-4 col-6 text-right">
-            <?php
-                if (isset($_SESSION['user']) && ($_SESSION['user'] != "")) {
-                    $username = $_SESSION['user']['user'];
-                    echo '<h5 type="button" style="font-size: 20px;
-                    font-weight: 700;"class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown"><i class="nav-icon fa fa-user"></i> ' . $username . '</h5>';
-                    echo'<div class="dropdown-menu dropdown-menu-right">';
-                    if ($_SESSION['user']['role'] == 1){
-                        echo ' <a href="admin/index.php" class="dropdown-item" type="button">Quản trị</a>';
-                        
-                    }
-                    echo ' <a href="index.php?" class="dropdown-item" type="button">Lịch sử đặt hàng</a>
-                            <a href="index.php?act=thoat" class="dropdown-item" type="button">Đăng xuất</a>
-                            </div>';
-                        
-                } else {
-                ?>
-                    <form action="?act=dangnhap1" method="post">
-                        <button class="btn btn-success" type="submit">Đăng nhập</button>
-                    </form>
-            <?php } ?>
+            <div class="col-lg-3 col-7 text-right">
+                <?php
+                    if (isset($_SESSION['user']) && ($_SESSION['user'] != "")) {
+                        $username = $_SESSION['user']['user'];
+                        echo '<h5 type="button" style="font-size: 20px;
+                        font-weight: 700; margin-right: -100px;"class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown"><i class="nav-icon fa fa-user"></i> ' . $username . '</h5>';
+                        echo'<div class="dropdown-menu dropdown-menu-right">';
+                        if ($_SESSION['user']['role'] == 1){
+                            echo ' <a href="admin/index.php" class="dropdown-item" type="button">Quản trị</a>';
+                            
+                        }
+                        echo ' <a href="?act=lichsudh" class="dropdown-item" type="button">Lịch sử đặt hàng</a>
+                                <a href="index.php?act=thoat" class="dropdown-item" type="button">Đăng xuất</a>
+                                </div>';
+                            
+                    } else {
+                    ?>
+                    <div class="flis" style="  display: flex">
+                        <div class="col-7" style="margin-left: 150px;">
+                            <form action="?act=dangnhap1" method="post">
+                            <button class="btn btn-success" type="submit">Đăng nhập</button>
+                            </form>
+                        </div>  
+                        <div class="col-5" style="margin-left: -45px;">
+                            <form action="?act=dangky1" method="post">
+                            <button class="btn btn-warning" type="submit">Đăng ký</button>
+                            </form>
+                        </div>
+                    </div>
+                <?php } ?>
             </div>
         </div>
     </div>
@@ -96,7 +104,7 @@
             
             <div class="col-lg-9">
                 <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-0">
-                    <a href="" class="text-decoration-none d-block d-lg-none">
+                    <a href="index.php" class="text-decoration-none d-block d-lg-none">
                         <span class="h1 text-uppercase text-dark bg-light px-2">POLY</span>
                         <span class="h1 text-uppercase text-light bg-primary px-2 ml-n1">XINCHAO</span>
                     </a>
