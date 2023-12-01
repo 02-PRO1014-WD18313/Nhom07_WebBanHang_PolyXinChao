@@ -99,22 +99,25 @@
                             <div class="d-flex align-items-center mb-4 pt-2">
                                 <div class="input-group quantity mr-3" style="width: 130px;">
                                     <div class="input-group-btn">
-                                        <button class="btn btn-primary btn-minus">
+                                        <button class="btn btn-primary btn-minus" type="button" onclick="updateQuantity(-1)">
                                             <i class="fa fa-minus"></i>
                                         </button>
                                     </div>
-                                    <input type="text" class="form-control bg-secondary border-0 text-center" value="1">
+                                    <input type="text" name="soluong" id="quantityInput" min="1" class="form-control bg-secondary border-0 text-center" value="1">
                                     <div class="input-group-btn">
-                                        <button class="btn btn-primary btn-plus">
+                                        <button class="btn btn-primary btn-plus" type="button" onclick="updateQuantity(1)">
                                             <i class="fa fa-plus"></i>
                                         </button>
                                     </div>
                                 </div>
                                 <input type="hidden" name="id" value="'.$id.'">
                                 <input type="hidden" name="name" value="'.$name.'">
+                                <input type="hidden" name="soluong" id="hiddenQuantity" value="1">
                                 <input type="hidden" name="img" value="'.$img.'">
                                 <input type="hidden" name="price" value="'.$price.'">
-                                <button type="submit" value="btn" name="addtocart" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i>Thêm vào giỏ</button>
+                                <button type="submit" value="btn" name="addtocart" class="btn btn-primary px-3">
+                                    <i class="fa fa-shopping-cart mr-1"></i>Thêm vào giỏ
+                                </button>
                             </div>
                             <div class="d-flex pt-2">
                                 <strong class="text-dark mr-2">Share on:</strong>
@@ -190,8 +193,16 @@
             ?>
         </div>
 
+    <script>
+        function updateQuantity(amount) {
+            var quantityInput = document.getElementById('quantityInput');
+            var hiddenQuantity = document.getElementById('hiddenQuantity');
+            var newQuantity = Math.max(parseInt(quantityInput.value) + amount, 1);
+            quantityInput.value = newQuantity;
+            hiddenQuantity.value = newQuantity;
+        }
+    </script>
 
-        
 </body>
 
 </html>
