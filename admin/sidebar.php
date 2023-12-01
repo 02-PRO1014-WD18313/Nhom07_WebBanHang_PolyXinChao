@@ -82,7 +82,7 @@
                 -->
                 <li class="nav-item has-treeview">
                      <a href="#" class="nav-link">
-                         <i class="nav-icon fa fa-file"></i>
+                     <i class="nav-icon fa fa-file"></i>
                         <p>
                              Quản lý sản phẩm
                              <i class="fas fa-angle-left right"></i>
@@ -119,7 +119,7 @@
                 -->
                 <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
-                            <i class="nav-icon fa fa-file"></i>
+                            <i class="nav-icon fa fa-flask"></i>
                             <p>
                                 Ql Thuộc tính biến thể
                                 <i class="fas fa-angle-left right"></i>
@@ -175,12 +175,35 @@
                     </ul>
                      
                 </li>
+                <li class="nav-item has-treeview">
+                     <a href="#" class="nav-link">
+                         <i class="nav-icon fa fa-truck"></i>
+                         <p>
+                             Quản lý đơn hàng
+                             <i class="fas fa-angle-left right"></i>
+                         </p>
+                     </a>
+                     <ul class="nav nav-treeview">
+                         <li class="nav-item">
+                             <a href="index.php?act=listbill" class="nav-link">
+                                 <i class="far fa-circle nav-icon"></i>
+                                 <p>Danh sách xác nhận</p>
+                             </a>
+                         </li>
+                         <li class="nav-item">
+                             <a href="index.php?act=listbill" class="nav-link">
+                                 <i class="far fa-circle nav-icon"></i>
+                                 <p>Sửa</p>
+                             </a>
+                         </li>
+                     </ul>
+                 </li>
                          
                  
 
                 <li class="nav-item has-treeview">
                      <a href="#" class="nav-link">
-                         <i class="nav-icon fa fa-plus"></i>
+                         <i class="nav-icon fa fa-user"></i>
                          <p>
                              Quản lý người dùng
                              <i class="fas fa-angle-left right"></i>
@@ -209,9 +232,9 @@
                  </li>
                  <li class="nav-item has-treeview">
                      <a href="#" class="nav-link">
-                         <i class="nav-icon fa fa-plus"></i>
+                         <i class="nav-icon fa fa-comment"></i>
                          <p>
-                             Phản hồi khách hàngx
+                             Phản hồi khách hàng
                              <i class="fas fa-angle-left right"></i>
                          </p>
                      </a>
@@ -261,10 +284,10 @@
                  </li>
                  <li class="nav-item has-treeview">
                      <a href="index.php?act=bieudo" class="nav-link">
-                         <i class="nav-icon fa fa-plus"></i>
+                         
                          <p>
                                 Biểu đồ
-                             <i class="fas fa-angle-left right"></i>
+                             
                          </p>
                      </a>
                  </li>

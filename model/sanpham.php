@@ -1,6 +1,6 @@
 <?php
-    function insert_sanpham($tensp,$giasp,$anhsp,$created_at,$mmota,$iddm,$id_size,$id_tp){
-        $sql="INSERT INTO sanpham(name,price,img,created_at,description,iddm,id_size,id_tp) values('$tensp','$giasp','$anhsp','$created_at','$mmota','$iddm','$id_size','$id_tp')";
+    function insert_sanpham($tensp,$giasp,$anhsp,$created_at,$mmota,$iddm){
+        $sql="INSERT INTO sanpham(name,price,img,created_at,description,iddm) values('$tensp','$giasp','$anhsp','$created_at','$mmota','$iddm')";
         pdo_execute($sql); 
     }
 
@@ -42,8 +42,9 @@
         
     }
     function loadone_sanpham($id){
-        // $sql="SELECT * FROM sanpham  WHERE  id=".$id;
-        $sql = "SELECT sanpham.*, size.name as name_size FROM sanpham JOIN size ON sanpham.id_size = size.id WHERE sanpham.id='$id'";
+        $sql="SELECT * FROM sanpham  WHERE  id=".$id;
+        // $sql = "SELECT sanpham.*, size.name as name_size FROM sanpham JOIN size ON sanpham.id_size = size.id WHERE sanpham.id='$id'";
+        // $sql = "SELECT sanpham.*, size.name as name_size FROM sanpham JOIN size ON sanpham.id_size = size.id WHERE sanpham.id='$id'";
         $sp=pdo_query_one($sql);
         return $sp;
     }
@@ -52,7 +53,7 @@
         $listsanpham=pdo_query($sql);
         return $listsanpham;
     }
-    function  update_sanpham($id,$tensp,$giasp,$mmota,$anhsp,$iddm,$id_size,$id_t){
+    function  update_sanpham($id,$tensp,$giasp,$mmota,$anhsp,$iddm){
         if($anhsp!="")
             $sql="UPDATE sanpham SET name='".$tensp."', price='".$giasp."', description='".$mmota."', img='".$anhsp."', iddm='".$iddm."' WHERE id=".$id;
         else

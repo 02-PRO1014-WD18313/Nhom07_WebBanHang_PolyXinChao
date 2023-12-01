@@ -48,7 +48,7 @@
                                 <form action="index.php?act=spct&idsp=<?=$id?>" method="POST">
                                     <input type="hidden" name="idpro" value="<?=$id?>">
                                     <input type="text" name="noidung">
-                                    <input type="submit" name="guibinhluan" value="Gửi bình luận">
+                                    <button class="btn btn-dark"  type="submit" name="guibinhluan" value="btn">Gửi bình luận</button>
                                 </form>
                             </div><br><br>
                             <?php foreach($binhluan as $value): ?>

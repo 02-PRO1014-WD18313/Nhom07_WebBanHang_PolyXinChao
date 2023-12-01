@@ -42,48 +42,6 @@
             </select>        
         </div>
         <hr>
-         
-        <div class="col-lg-12">
-            <h3 class="section-title position-relative text-uppercase mb-3" style="color: blue">Sản phẩm biến thể</h5>
-            <hr>
-            <div class="bg-light p-30 mb-3">
-            <?php for ($i = 1; $i <= 3; $i++) { ?>
-                <div class="row">
-                    <div class="col-md-3 form-group">
-                        <label>Kích cỡ</label>
-                        <select class="custom-select" name="id_size[<?php echo $i; ?>]">
-                            <option selected>Size...</option>
-                            <?php foreach ($listsize as $size) { ?>
-                                <option value="<?php echo $size['id']; ?>"><?php echo $size['name']; ?></option>
-                            <?php } ?>
-                        </select>
-                    </div>
-
-                    <div class="col-md-3 form-group">
-                        <label>Topping</label>
-                        <select class="custom-select" name="id_tp"><option selected>toping...</option>
-                        <?php
-                            foreach($listtopping as $topping){
-                                extract($topping);
-                                echo '<option value="'.$id.'">'.$name.'</option>';
-                            }
-                        ?>
-                        </select>
-                    </div>
-
-                    <div class="col-md-3 form-group">
-                        <label>Giá</label>
-                        <input class="form-control" type="text" placeholder="giá..." name="price">
-                    </div>
-                    
-                    <div class="col-md-3 form-group">
-                        <label>Số lượng</label>
-                        <input class="form-control" type="text" placeholder="Số lượng...">
-                    </div>
-                    <!-- Thêm các trường khác tương tự cho topping, giá, số lượng -->
-                </div>
-            <?php } ?>
-        </div>
                     
         <button class="btn btn-success" name="themmoi" type="submit" value="1" >Them moi</button>
     </div>

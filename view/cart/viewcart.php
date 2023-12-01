@@ -79,9 +79,10 @@
                                     <div class="d-flex justify-content-between mt-2">
                                         <h5>Tổng cộng</h5>
                                         <h5>' . number_format($tongcong, 0, ".", ".") . ' đ</h5>
+                                        <input type="text" name="thanhtien" hidden value="<?php ($tongcong)?>">
                                     </div>
                                     <a href="index.php?act=checkout"> <button class="btn btn-block btn-primary font-weight-bold my-3 py-3">Tiến hành đặt hàng</button></a>
-                
+                                    
                                 </div>
                             </div>
                         </div>';
