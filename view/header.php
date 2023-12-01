@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>POLY XINCHAO</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <!-- Favicon -->
     <link href="view/img/favicon.ico" rel="icon">
@@ -25,7 +25,6 @@
 
 <body>
     <!-- Topbar Start -->
-
         <div class="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex" style="width: 100%;">
             <img src="./img1/logo1.jpg." alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="width:70px; ">
             <div class="col-lg-4" style="margin-left: -30px;">
