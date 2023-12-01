@@ -26,11 +26,11 @@
         $sql="delete FROM binhluan WHERE id=".$id;
         pdo_execute($sql);
     }
-    function insert_binhluan($idpro, $noidung){
+    function insert_binhluan($idpro,$idUser, $noidung){
         $date = date('Y-m-d H:i:s');
         $sql = "
             INSERT INTO `binhluan`(`noidung`, `iduser`, `idpro`, `ngaybinhluan`) 
-            VALUES ('$noidung','17','$idpro','$date');
+            VALUES ('$noidung',$idUser,'$idpro','$date');
         ";
         pdo_execute($sql);
     }

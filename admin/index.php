@@ -184,8 +184,6 @@ if (isset($_GET['act'])) {
                     // echo "Sorry, there was an error uploading your file.";
                 }
                 $iddm = $_POST['iddm'];
-                $id_size = $_POST['id_size'];
-                $id_tp = $_POST['id_tp'];
 
                 $errors = [];
                 if (empty($tensp)) {
@@ -208,23 +206,14 @@ if (isset($_GET['act'])) {
             if (empty($iddm)) {
                 $errors['iddm'] = 'Yêu cầu chọn danh mục cho sản phẩm';
             }
-            if (empty($id_size)) {
-                $errors['id_size'] = 'Yêu cầu chọn size cho sản phẩm';
-            }
-            
-            if (empty($id_tp)) {
-                $errors['id_tp'] = 'Yêu cầu chọn topping cho sản phẩm';
-            }
-
-
 
             if (empty($errors)) {
-                insert_sanpham($tensp, $giasp, $anhsp, $created_at, $mmota, $iddm, $id_size, $id_tp);
+                insert_sanpham($tensp, $giasp, $anhsp, $created_at, $mmota, $iddm);
                 $thongbao = "them thanh cong";
             }
 
             $listsize = loadall_size();
-            $listtopping = loadall_topping();
+            // $listtopping = loadall_topping();
             $listdanhmuc = loadall_danhmuc();
             include "sanpham/add.php";
             break;
@@ -274,7 +263,7 @@ if (isset($_GET['act'])) {
 
 
                 $iddm = $_POST['iddm'];
-                update_sanpham($id, $tensp, $giasp, $mmota, $anhsp, $iddm, $id_size, $id_tp);
+                update_sanpham($id, $tensp, $giasp, $mmota, $anhsp, $iddm,);
                 $thongbao = "update thanh cong";
             }
             include "sanpham/list.php";
@@ -376,6 +365,24 @@ if (isset($_GET['act'])) {
             $listthongke=loadall_thongke();
             include "thongke/bieudo.php";
             break;
+
+        case 'listbill':
+            if(isset($_POST['kyw'])&&($_POST['kyw']!="")){
+                $kyw=$_POST['kyw'];
+            }else{
+                $kyw="";
+            }
+            $listbill=loadall_bill($kyw,0);
+                include "donhang/list.php";
+                break;
+
+        case 'xoadh':
+            if(isset($_GET['id'])&&$_GET['id']>0){
+                delete_donhang($_GET['id']);
+            }
+            $listbill=loadall_bill("",0);
+                include "donhang/list.php";
+                break;
     }
 } else {
     include "home.php";

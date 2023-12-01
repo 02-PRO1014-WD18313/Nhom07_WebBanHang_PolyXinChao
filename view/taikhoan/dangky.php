@@ -1,6 +1,6 @@
 <div class="row mt-5 main-web">
   <div class="col-md-4 offset-md-4">
-    <h2 class="text-center" style="color: blue; ">Nhập thông tin đăng ký</h2>
+    <h4 class="text-center">Nhập thông tin đăng ký</h4>
     <form action="index.php?act=dangky1" method="post" style="border: 1px solid #ccc; border-radius: 5px; padding: 20px;">
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label" style="color: #000;">Email</label>

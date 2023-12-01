@@ -14,7 +14,7 @@ include "view/header.php";
 include "global.php";
 include "model/sanpham.php";
 $spnew = loadall_sanpham_home();
-
+$dstop10=loadall_sanpham_top10();
 
 if (!isset($_SESSION['mycart'])) {
     $_SESSION['mycart'] = array();
@@ -58,7 +58,7 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
 
         case 'spct':
             if(isset($_POST['guibinhluan'])){
-                insert_binhluan($_POST['idpro'], $_POST['noidung']);
+                insert_binhluan($_POST['idpro'],$_SESSION['user']['id'], $_POST['noidung']);
             }
             if (isset($_GET['idsp']) && ($_GET['idsp'] > 0)) {
                 $id = $_GET['idsp'];
@@ -142,37 +142,7 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
             }
             header('location: index.php?act=viewcart');
             break;
-        case 'billcomfirm':
-            if(isset($_POST['dathang']) && ($_POST['dathang'])){
-                if(isset($_SESSION['user'])){
-                    $iduser = $_SESSION['user']['id'];
-                } else {
-                    $iduser = 0;
-                }
-                // đăng nhập để đặt hàng            
-                if ($iduser === 0) {
-                    header("Location: index.php?act=dangnhap1");
-                    exit();
-                }
-                $name=$_POST['name'];
-                $email=$_POST['email'];
-                $address=$_POST['address'];
-                $tel=$_POST['tel'];
-                $pttt=0;
-                $ngaydathang = date('h:i:sa d-m-Y');
-                $tongdonhang=tongdonhang();
-
-                $idbill= insert_bill($iduser,$name,$address,$tel,$email,$pttt,$ngaydathang,$tongdonhang);
-                
-                foreach($_SESSION['mycart'] as $cart){
-                    insert_cart($_SESSION['user']['id'],$cart[0],$cart[2],$cart[1],$cart[3],$cart[4],$cart[5],$idbill);
-                }
-                unset($_SESSION['mycart']);
-                $bill= loadone_bill($id);
-                $billct=loadall_cart($id);
-                include "view/cart/billcomfirm.php";
-                break; 
-            }
+        
         case 'timkiem':
             if (isset($_POST['timkiem']) && ($_POST['timkiem'])) {
                 $kyw = $_POST['search'];
@@ -248,7 +218,7 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                     $errors['pass'] = 'Mật khẩu không được để trống';
                 }
                 if (empty($errors)) {
-                    insert_taikhoan($user, $email, $pass, $address, $tel, $role);
+                    insert_taikhoan($user, $email, $pass, $address, $tel, 0);
                     $thongbao = '
                         <div class="alert alert-success" role="alert">
                             Đăng ký thành công. Bây giờ bạn có thể đăng nhập!
@@ -257,22 +227,93 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
             }
             include "view/taikhoan/dangky.php";
             break;
+        case 'lichsudh':
+            $listdh = load_lichsudh($_SESSION['user']['id']);
+            load_lichsudh($_SESSION['user']['id']);
+            include 'view/cart/lichsudh.php';
+            break;
         case 'thoat':
             unset($_SESSION['user']);
             unset($_SESSION['pass']);
+            unset($_SESSION['mycart']);
             header('location: index.php?');
             break;
 
-
-        case 'checkout':
+        case 'checkout':   
             if(!empty($_POST['pttt'])){
                 $tong = $_POST['tong'];
                 $pttt = $_POST['pttt'];
+                if($pttt == 'ttoff'){
+                    if(isset($_SESSION['user'])){
+                        $iduser = $_SESSION['user']['id'];
+                    } else {
+                        $iduser = 0;
+                    }
+                    // đăng nhập để đặt hàng            
+                    if ($iduser === 0) {
+                        header("Location: index.php?act=dangnhap1");
+                        exit();
+                    }
+                    // $thanhtoan = $_POST['redirect'];
+                    $name = $_POST['name'];
+                    $email=$_POST['email'];
+                    $address=$_POST['address'];
+                    $tel=$_POST['tel'];
+                    $pttt=$_POST['pttt'];
+                    $ngaydathang = date('h:i:sa d-m-Y');
+                    $tongdonhang=tongdonhang();
+                    // $err = validate_form($user, $email, $sdt, $address);
+                    if (empty($err)) {
+                    $idbill= insert_bill($iduser,$name,$address,$tel,$email,$pttt,$ngaydathang,$tongdonhang);
+                    foreach($_SESSION['mycart'] as $cart){
+                            insert_cart($_SESSION['user']['id'],$cart[0],$cart[2],$cart[1],$cart[3],$cart[4],$cart[5],$idbill);
+                            // delete_cart($idcart);
+                            // $_SESSION['count_cart'] = count(count_cart($_SESSION['iduser']));
+                        }
+                        unset($_SESSION['mycart']);
+                        $bill= loadone_bill($id);
+                        $billct=loadall_cart($id);
+                        include "view/cart/billcomfirm.php";
+                        break; 
+                }
+            } else if($pttt == 'vnpay'){
+                $tong = $_POST['tong'];
+                $pttt = $_POST['pttt'];
                 if($pttt == 'vnpay'){
-                    error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
-                    date_default_timezone_set('Asia/Ho_Chi_Minh');
-
-
+                    if(isset($_SESSION['user'])){
+                        $iduser = $_SESSION['user']['id'];
+                    } else {
+                        $iduser = 0;
+                    }
+                    // đăng nhập để đặt hàng            
+                    if ($iduser === 0) {
+                        header("Location: index.php?act=dangnhap1");
+                        exit();
+                    }
+                    // $thanhtoan = $_POST['redirect'];
+                    $name = $_POST['name'];
+                    $email=$_POST['email'];
+                    $address=$_POST['address'];
+                    $tel=$_POST['tel'];
+                    $pttt=$_POST['pttt'];
+                    $ngaydathang = date('h:i:sa d-m-Y');
+                    $tongdonhang=tongdonhang();
+                    if (empty($err)) {
+                    $idbill= insert_bill($iduser,$name,$address,$tel,$email,$pttt,$ngaydathang,$tongdonhang);   
+                    foreach($_SESSION['mycart'] as $cart){
+                            insert_cart($_SESSION['user']['id'],$cart[0],$cart[2],$cart[1],$cart[3],$cart[4],$cart[5],$idbill);
+                            // delete_cart($idcart);
+                            // $_SESSION['count_cart'] = count(count_cart($_SESSION['iduser']));
+                        }
+                        unset($_SESSION['mycart']);
+                        $bill= loadone_bill($id);
+                        $billct=loadall_cart($id);
+                        header('location:view/cart/billcomfirm');
+                        
+                }
+                error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
+                date_default_timezone_set('Asia/Ho_Chi_Minh');
+              
                 $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
                 $vnp_Returnurl = "http://localhost/Nhom07_WebBanHang_PolyXinChao/index.php?act=billcomfirm";
                 $vnp_TmnCode = "CJQLSZK0"; //Mã website tại VNPAY 
@@ -341,7 +382,7 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                 } else {
                     echo json_encode($returnData);
                 }
-
+            }
                 
             }else if($pttt=='momo_qr'){
                 header('Content-type: text/html; charset=utf-8');
@@ -412,6 +453,40 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                 header('Location: ' . $jsonResult['payUrl']);
 
             }else if($pttt=='momo_atm'){
+                $tong = $_POST['tong'];
+                $pttt = $_POST['pttt'];
+                if($pttt == 'momo_atm'){
+                    if(isset($_SESSION['user'])){
+                        $iduser = $_SESSION['user']['id'];
+                    } else {
+                        $iduser = 0;
+                    }
+                    // đăng nhập để đặt hàng            
+                    if ($iduser === 0) {
+                        header("Location: index.php?act=dangnhap1");
+                        exit();
+                    }
+                    // $thanhtoan = $_POST['redirect'];
+                    $name = $_POST['name'];
+                    $email=$_POST['email'];
+                    $address=$_POST['address'];
+                    $tel=$_POST['tel'];
+                    $pttt=$_POST['pttt'];
+                    $ngaydathang = date('h:i:sa d-m-Y');
+                    $tongdonhang=tongdonhang();
+                    if (empty($err)) {
+                    $idbill= insert_bill($iduser,$name,$address,$tel,$email,$pttt,$ngaydathang,$tongdonhang);   
+                    foreach($_SESSION['mycart'] as $cart){
+                            insert_cart($_SESSION['user']['id'],$cart[0],$cart[2],$cart[1],$cart[3],$cart[4],$cart[5],$idbill);
+                            // delete_cart($idcart);
+                            // $_SESSION['count_cart'] = count(count_cart($_SESSION['iduser']));
+                        }
+                        unset($_SESSION['mycart']);
+                        $bill= loadone_bill($id);
+                        $billct=loadall_cart($id);
+                        header('location:view/cart/billcomfirm');
+                        
+                }
                 header('Content-type: text/html; charset=utf-8');
 
                 function execPostRequest($url, $data)
@@ -478,6 +553,7 @@ if ((isset($_GET['act'])) && ($_GET['act'] != "")) {
                 header('Location: ' . $jsonResult['payUrl']);
             }
         }
+            }
             include "view/checkout.php";
             break;
 
