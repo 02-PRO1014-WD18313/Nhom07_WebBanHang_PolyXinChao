@@ -64,46 +64,13 @@
                                 <h3 class="font-weight-semi-bold mb-4">'.number_format($price, 0, ".", ".").'đ</h3>
                                 <p class="mb-4">'.$description.'</p>
                                 <div class="d-flex mb-3">
-                                <strong class="text-dark mr-3">Sizes:</strong>
+                                
                                 <?php
                                 ?>
                                 
-                                <form>
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="custom-control-input" id="size-3" name="size">
-                                        <label class="custom-control-label" for="size-3">M</label>
-                                    </div>
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="custom-control-input" id="size-3" name="size">
-                                        <label class="custom-control-label" for="size-3">L</label>
-                                    </div>
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="custom-control-input" id="size-3" name="size">
-                                        <label class="custom-control-label" for="size-3">XL</label>
-                                    </div>
-                                </form>
+                                
                             </div>
-                            <div class="d-flex mb-4">
-                                <strong class="text-dark mr-3">Topping:</strong>
-                                <form>
-                                        <div class="custom-control custom-radio custom-control-inline">
-                                            <input type="radio" class="custom-control-input" id="color-1" name="color">
-                                            <label class="custom-control-label" for="color-1">Trân châu vị xoài</label>
-                                    </div>
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="custom-control-input" id="color-2" name="color">
-                                        <label class="custom-control-label" for="color-2">Trân châu trắng</label>
-                                    </div>
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="custom-control-input" id="color-3" name="color">
-                                        <label class="custom-control-label" for="color-3">trân châu đen</label>
-                                    </div>
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" class="custom-control-input" id="color-4" name="color">
-                                        <label class="custom-control-label" for="color-4">Trân châu body(new)</label>
-                                    </div>
-                                </form>
-                            </div>
+                           
                             <div class="d-flex align-items-center mb-4 pt-2">
                                 <div class="input-group quantity mr-3" style="width: 130px;">
                                     <div class="input-group-btn">

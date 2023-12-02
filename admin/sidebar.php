@@ -240,21 +240,9 @@
                      </a>
                      <ul class="nav nav-treeview">
                          <li class="nav-item">
-                             <a href="?module=subject&action=lists" class="nav-link">
+                             <a href="index.php?act=binhluan" class="nav-link">
                                  <i class="far fa-circle nav-icon"></i>
                                  <p>Danh sách</p>
-                             </a>
-                         </li>
-                         <li class="nav-item">
-                             <a href="?module=subject&action=add" class="nav-link">
-                                 <i class="far fa-circle nav-icon"></i>
-                                 <p>Thêm mới</p>
-                             </a>
-                         </li>
-                         <li class="nav-item">
-                             <a href="?module=subject&action=add" class="nav-link">
-                                 <i class="far fa-circle nav-icon"></i>
-                                 <p>sửa</p>
                              </a>
                          </li>
                      </ul>
@@ -292,16 +280,7 @@
                      </a>
                  </li>
 
-                 <li class="nav-item has-treeview">
-                     <a href="index.php?act=binhluan" class="nav-link">
-                         <i class="nav-icon fa fa-plus"></i>
-                         <p>
-                               Quản lý bình luận
-                             <i class="fas fa-angle-left right"></i>
-                         </p>
-                     </a>
-                 </li>
-
+            
                  <!-- 
                     subject -end 
                 -->

@@ -8,8 +8,8 @@
         $sql="delete FROM sanpham WHERE id=".$id;
         pdo_execute($sql);
     }
-    function loadall_sanpham_top10(){
-        $sql="SELECT * FROM sanpham where 1 order by view desc limit 0,10"; 
+    function loadall_sanpham_top4(){
+        $sql="SELECT * FROM sanpham where 1 order by view desc limit 0,4"; 
         $listsanpham=pdo_query($sql);
         return $listsanpham;
     }
