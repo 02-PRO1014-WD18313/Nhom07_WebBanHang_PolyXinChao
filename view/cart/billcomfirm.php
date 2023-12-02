@@ -20,7 +20,7 @@
 <div class="container payment-success-container" style="padding-bottom:150px; padding-top: 100px;">
     <div class="text-center">
         <div class="success-icon">&#10004;</div>
-        <h2>DẶt hàng Thành Công!</h2>
+        <h2>Đặt hàng Thành Công!</h2>
         <p>Cảm ơn bạn đã mua hàng chúc bạn ngon miệng. Đơn hàng của bạn sẽ nhanh chóng được được xác nhận.</p>
     </div>
     <div class="back-to-home">
