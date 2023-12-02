@@ -18,7 +18,7 @@
             <input type="text" placeholder="Nhập giá sản phẩm" class="form-control" name="giasp" />
             <span style="color: red"><?php echo !empty($errors['giasp'])?$errors['giasp']:false ?></span> 
         </div>
-        <div class="form-group">
+                <div class="form-group">
             <label for="">Ảnh sản phẩm</label>
             <input type="file" class="form-control" name="anhsp" required/>
         </div>

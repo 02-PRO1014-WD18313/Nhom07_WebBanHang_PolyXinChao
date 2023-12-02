@@ -32,12 +32,11 @@
             <table class="table table-bordered">
                 <thead>
                     <tr style="background-color: #C6E2FF;">
-                        <th scope="col" width="3%">Mã sp</th>
+                        <th scope="col" width="6%">Mã sp</th>
                         <th scope="col"  width="15%">Tên sản phẩm</th>
-                        <th scope="col">Ảnh sản phẩm</th>
+                        <th scope="col">Ảnh</th>
                         <th scope="col"width="8%">Giá sp</th>
                         <th scope="col">Mô tả sản phẩm</th>
-                        <th scope="col" width="10%">Lượt bán sp</th>
                         <th scope="col" >created_at</th>
                         <th scope="col" width="5%">Sửa</th>
                         <th scope="col" width="5%">Xóa</th>
@@ -62,7 +61,6 @@
                         <td>' . $anhsp . '</td>
                         <td>' . $price . '</td>
                         <td>' . $description . '</td>
-                        <td>' . $view . '</td>
                         <td>' . $created_at . '</td>
                         <td> <a href="' . $suasp . '" class="btn btn-warning"><i class="fa fa-edit"></i></a></td>               
                         <td><a href="'.$xoasp.'" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>

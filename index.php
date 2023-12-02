@@ -14,7 +14,7 @@ include "view/header.php";
 include "global.php";
 include "model/sanpham.php";
 $spnew = loadall_sanpham_home();
-$dstop10=loadall_sanpham_top10();
+$dstop10=loadall_sanpham_top4();
 
 if (!isset($_SESSION['mycart'])) {
     $_SESSION['mycart'] = array();

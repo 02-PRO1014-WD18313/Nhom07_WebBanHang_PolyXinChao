@@ -190,10 +190,10 @@ if (isset($_GET['act'])) {
                     $errors['tensp'] = 'Yêu cầu nhập vào tên sản phẩm';
                 }
                 if (empty($giasp)) {
-                    $errors['giasp'] = 'Yêu cầu nhập giá tên sản phẩm';
+                    $errors['giasp'] = 'Yêu cầu nhập giá bán sản phẩm';
                 }
                 if (empty($mmota)) {
-                    $errors['mmota'] = 'Yêu cầu nhập mô tả tên sản phẩm';
+                    $errors['mmota'] = 'Yêu cầu nhập mô tả sản phẩm';
                 } else {
                     if (strlen($mmota) < 6) {
                         $errors['mmota'] = 'Mô tả lớn hơn 6 ký tự';
@@ -263,10 +263,13 @@ if (isset($_GET['act'])) {
 
 
                 $iddm = $_POST['iddm'];
-                update_sanpham($id, $tensp, $giasp, $mmota, $anhsp, $iddm,);
+                update_sanpham($id,$tensp,$giasp,$mmota,$anhsp,$iddm);
                 $thongbao = "update thanh cong";
             }
+            $listdanhmuc = loadall_danhmuc();
+            $listsanpham=loadall_sanpham();
             include "sanpham/list.php";
+            break;
 
         case 'listtk':
             $listtaikhoan = loadall_taikhoan();

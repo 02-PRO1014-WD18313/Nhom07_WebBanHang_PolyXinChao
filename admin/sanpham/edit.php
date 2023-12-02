@@ -50,7 +50,7 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
             </div>
             <div class="form-group">
                 <label>Mô tả sản phẩm</label> <br>
-                <input type="text" class="form-control" name="mmota" value="<?=$fullname?>">
+                <input type="text" class="form-control" name="mmota" value="<?=$description?>">
             </div>
             <div class="form-group">
                 <input type="hidden" name="id" value="<?php echo !empty($idUpdate) ? $idUpdate : false ?>">
