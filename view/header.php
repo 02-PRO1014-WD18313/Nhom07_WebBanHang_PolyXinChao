@@ -116,9 +116,9 @@
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Sản phẩm <i class="fa fa-angle-down mt-1"></i></a>
                                 <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
-                                    <a href="index.php?act=sanphamtu10_30" class="dropdown-item">Sản phẩm từ 10-30</a>
-                                    <a href="index.php?act=sanphamtu30_50" class="dropdown-item">Sản phẩm từ 30-50</a>
-                                    <a href="index.php?act=sanphamtu50_90" class="dropdown-item">Sản phẩm từ 50-90</a>
+                                    <a href="index.php?act=sanphamtu10_30" class="dropdown-item">Giá từ 10.000 - 30.000đ</a>
+                                    <a href="index.php?act=sanphamtu30_50" class="dropdown-item">Giá từ 30.000 - 50.000đ</a>
+                                    <a href="index.php?act=sanphamtu50_90" class="dropdown-item">Giá từ 50.000 - 90.000đ</a>
                                 </div>
                             </div>
 

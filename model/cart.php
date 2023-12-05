@@ -11,7 +11,7 @@ return $tong;
 }
 
 function load_lichsudh($id){
-    $sql = "SELECT cart.*, bill.iduser, bill.trangthai FROM cart  JOIN bill ON cart.idbill = bill.id WHERE bill.iduser = $id";
+    $sql = "SELECT cart.*, bill.iduser, bill.bill_status FROM cart  JOIN bill ON cart.idbill = bill.id WHERE bill.iduser = $id";
     return pdo_query($sql);
 }
 
@@ -54,21 +54,30 @@ function delete_donhang($id){
 function get_ttdh($n){
     switch ($n) {
         case '0':
-            $tt="Đơn hàng mới";
+            $tt="Chưa xác nhận";
             break;
         case '1':
-            $tt="Đang xử lý";
+            $tt="Đã xác nhận";
             break;
         case '2':
             $tt="Đang giao hàng";
             break;
         case '3':
-            $tt="Đã giao hàng";
+            $tt="Giao hàng thành công";
             break;
         default:
-            $tt="Đơn hàng mới";
+            $tt="Chưa xác nhận";
             break;
     }
     return $tt;
+}
+function  update_donhang($id,$bill_status){
+    $sql="UPDATE bill SET  bill_status='".$bill_status."' WHERE id=".$id;
+    pdo_execute($sql);
+}
+function loadone_donhang($id){
+    $sql="SELECT * FROM bill WHERE  id=".$id;
+    $bill=pdo_query_one($sql);
+    return $bill;
 }
 ?>
