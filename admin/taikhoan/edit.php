@@ -39,8 +39,10 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
                 <input type="text" class="form-control" name="tel" value="<?=$tel?>">
             </div>
             <div class="form-group">
-                <label>Phân quyền</label> <br>
-                <input type="number" class="form-control" name="role" value="<?=$role?>">
+                <select name="role" id="">
+                    <option value="">Người dùng</option>
+                    <option value="1">Quản trị viên</option>
+                </select>
             </div>
             <div class="form-group">
                 <input type="hidden" name="id" value="<?php echo !empty($idUpdate) ? $idUpdate : false ?>">

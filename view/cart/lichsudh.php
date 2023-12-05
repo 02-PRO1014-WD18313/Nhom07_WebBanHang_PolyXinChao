@@ -13,14 +13,14 @@
     <?php 
         foreach($listdh as $listdh) {
             extract($listdh);
-            if ($trangthai == 0) {
-                $trangthai = '<span style="background-color: #e74a3b;color: white; border-radius: 8px;padding: 0 5px">Chưa xác nhận</span>';
-            } else if ($trangthai == 1) {
-                $trangthai = '<span style="background-color: #f6c23e;color: white; border-radius: 8px;padding: 0 5px">Đang giao hàng</span>';
-            } else if ($trangthai == 2) {
-                $trangthai = '<span style="background-color: #4e73df; color: white; border-radius: 8px;padding: 0 5px">Đã xác nhận</span>';
+            if ($bill_status == 0) {
+                $bill_status = '<span style="background-color: #e74a3b;color: white; border-radius: 8px;padding: 0 5px">Chưa xác nhận</span>';
+            } else if ($bill_status == 1) {
+                $bill_status = '<span style="background-color: #0099FF;color: white; border-radius: 8px;padding: 0 5px">Đã xác nhận</span>';
+            } else if ($bill_status == 2) {
+                $bill_status = '<span style="background-color: #4e73df; color: white; border-radius: 8px;padding: 0 5px">Đang giao hàng</span>';
             } else {
-                $trangthai = '<span style="background-color: #e74a3b;color: white; border-radius: 8px;padding: 0 5px">Đã giao hàng</span>';
+                $bill_status = '<span style="background-color: #3399CC;color: white; border-radius: 8px;padding: 0 5px">Giao hàng thành công</span>';
             }
         ?>
         <tr>
@@ -32,7 +32,7 @@
             </td>
             <td> x<?= $soluong ?>
             </td>
-            <td> <?= $trangthai ?>
+            <td> <?= $bill_status ?>
             </td>
             <td> ₫<?= number_format($soluong * $price * 1.5, 0, ',', '.') ?>
             </td>
