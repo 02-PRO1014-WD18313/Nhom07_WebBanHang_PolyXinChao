@@ -34,4 +34,15 @@ function loadall_taikhoan(){
         $tkh=pdo_query_one($sql);
         return $tkh;
     }
+    function get_role($n){
+        switch ($n) {
+            case '0':
+                $nd="Khách hàng";
+                break;
+            case '1':
+                $nd="Quản trị viên";
+                break;
+        }
+        return $nd;
+    }
 ?>

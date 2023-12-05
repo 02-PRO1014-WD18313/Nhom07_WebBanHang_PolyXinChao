@@ -343,7 +343,7 @@ if (isset($_GET['act'])) {
                 $thongbao = "update thanh cong";
             }
             include "taikhoan/list.php";
-
+            break;
             /////
         case 'binhluan':
             $listbinhluan = load_binhluan();
@@ -386,6 +386,23 @@ if (isset($_GET['act'])) {
             $listbill=loadall_bill("",0);
                 include "donhang/list.php";
                 break;
+
+        case 'suadh':
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                $donhang = loadone_donhang($_GET['id']);
+            }
+            include "donhang/edit.php";
+            break;
+
+        case 'updatedh':
+            if (isset($_POST['updatedh']) && ($_POST['updatedh'])) {
+                $id = $_POST['id'];
+                $bill_status = $_POST['bill_status'];
+                $donhang=update_donhang($id, $bill_status);
+                $thongbao = "update thanh cong";
+            }
+            $listbill=loadall_bill("",0);
+            include "donhang/list.php";
     }
 } else {
     include "home.php";

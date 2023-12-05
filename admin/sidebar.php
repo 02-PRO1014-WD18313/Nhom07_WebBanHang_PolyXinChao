@@ -1,5 +1,5 @@
  <!-- Main Sidebar Container -->
- <h1>llll</h1>
+ <!-- <h1>llll</h1> -->
  <aside class="main-sidebar sidebar-dark-primary elevation-4">
      <!-- Brand Logo -->
      <a href="../index.php?act=index.php" class="brand-link">
@@ -117,7 +117,7 @@
                  <!-- 
                     subject - begin 
                 -->
-                <li class="nav-item has-treeview">
+                <!-- <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fa fa-flask"></i>
                             <p>
@@ -174,7 +174,7 @@
                         </ul>
                     </ul>
                      
-                </li>
+                </li> -->
                 <li class="nav-item has-treeview">
                      <a href="#" class="nav-link">
                          <i class="nav-icon fa fa-truck"></i>

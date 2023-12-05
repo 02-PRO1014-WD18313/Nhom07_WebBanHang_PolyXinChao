@@ -30,6 +30,7 @@
                       foreach ($listbill as $bill) {
                         extract($bill);
                         $xoadh = "index.php?act=xoadh&id=" . $id;
+                        $suadh = "index.php?act=suadh&id=" . $id;
                         $kh=$bill['bill_name'].'
                         <br> '.$bill["bill_email"].'
                         <br> '.$bill["bill_address"].'
@@ -44,18 +45,7 @@
                         <td><strong>'.$bill["total"].'</strong>đ</td>
                         <td>' .$bill["ngaydathang"]. '</td>
                         <td>'.$ttdh.'</td>
-                        <td> 
-                        <div class="row" style="text-align: center;">
-                            <div class="col-md-3 form-group" style="text-align: center;">
-                                <select class="custom-select" style="width: 150px;">
-                                    <option selected>Trạng thái...</option>
-                                    <option>Xác nhận</option>
-                                    <option>Đang vận chuyển</option>
-                                    <option>Đã giao</option>
-                                </select>  
-                            </div>
-                        </div>
-                        </td>
+                        <td> <a href="' . $suadh . '" class="btn btn-warning"><i class="fa fa-edit"></i></a></td>    
                         <td><a href="'.$xoadh.'" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
                         
                     </tr>';
